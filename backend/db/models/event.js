@@ -15,14 +15,9 @@ module.exports = (sequelize, DataTypes) => {
       time: DataTypes.INTEGER,
       endTime: DataTypes.INTEGER,
       date: DataTypes.DATE,
-      locationId: {
-        type: DataTypes.INTEGER,
-        references: { model: "Locations" },
-      },
-      ownerId: {
-        type: DataTypes.INTEGER,
-        references: { model: "Users" },
-      },
+      locationId: DataTypes.INTEGER,
+      ownerId: DataTypes.INTEGER,
+      typeId: DataTypes.INTEGER,
     },
     {}
   );
