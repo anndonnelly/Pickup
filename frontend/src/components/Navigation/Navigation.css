@@ -1,0 +1,70 @@
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: flex-end;
+  height: 40px;
+  width: 100%;
+  /* background-color: blue; */
+}
+
+.nav-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  /* background-color: pink; */
+  list-style: none;
+}
+
+.nav-button-container {
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  padding-right: 40px;
+  height: auto;
+  width: 50%;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.login-button {
+  background-color: green;
+  /* margin-left: 250px; */
+}
+
+.home-container {
+  width: 50%;
+}
+
+.home-container {
+  width: 50%;
+}
+
+.footerDiv {
+  display: flex;
+}
+
+.footerDiv a img {
+  width: 20px;
+  height: 20px;
+}
+
+.socialMedia {
+  width: 11%;
+  display: flex;
+  justify-content: space-around;
+}
+.nav-buttons a {
+  padding-left: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgba(0, 130, 148, var(--tw-text-opacity));
+}
+
+.nav-buttons a:hover {
+  color: rgba(0, 130, 148, 1);
+}

@@ -1,0 +1,35 @@
+.mainContent {
+  margin: 0 auto;
+  width: 80%;
+}
+.marginDiv {
+  margin: 60px 0px;
+  width: 100%;
+}
+.sectionDiv {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.leftDiv {
+  width: 50%;
+}
+.rightDiv {
+  width: 50%;
+}
+
+.section1image {
+  width: 100%;
+}
+.section2image {
+  width: 30%;
+}
+.modalHeader {
+  text-align: center;
+}
+
+.modalHeader p {
+  font-size: 32px;
+  font-weight: bold;
+}
