@@ -28,12 +28,15 @@ module.exports = {
       },
       locationId: {
         type: Sequelize.INTEGER,
+        references: { model: "Locations" },
       },
       ownerId: {
         type: Sequelize.INTEGER,
+        references: { model: "Users" },
       },
       typeId: {
         type: Sequelize.INTEGER,
+        references: { model: "Types" },
       },
       createdAt: {
         allowNull: false,

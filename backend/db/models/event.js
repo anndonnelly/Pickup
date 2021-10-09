@@ -12,17 +12,58 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.TEXT,
       },
-      time: DataTypes.INTEGER,
-      endTime: DataTypes.INTEGER,
-      date: DataTypes.DATE,
-      locationId: DataTypes.INTEGER,
-      ownerId: DataTypes.INTEGER,
-      typeId: DataTypes.INTEGER,
+      time: {
+        type: DataTypes.INTEGER,
+      },
+      endTime: {
+        type: DataTypes.INTEGER,
+      },
+      date: {
+        type: DataTypes.DATE,
+      },
+      locationId: {
+        type: DataTypes.INTEGER,
+        references: { model: "Locations" },
+      },
+      ownerId: {
+        type: DataTypes.INTEGER,
+        references: { model: "Users" },
+      },
+      typeId: {
+        type: DataTypes.INTEGER,
+        references: { model: "Types" },
+      },
     },
     {}
   );
   Event.associate = function(models) {
     // associations can be defined here
+    const columnMapping = {
+      through: "RSVPs",
+      otherKey: "userId",
+      foreignKey: "eventId",
+    };
+    Event.belongsToMany(models.User, columnMapping);
+    Event.belongsTo(models.Location, { foreignKey: "locationId" });
+    Event.belongsTo(models.Type, { foreignKey: "typeId" });
   };
   return Event;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// User can have many groups
+// Groups can have many users
+// Event can belong to a group 
+// Groups can have many events
