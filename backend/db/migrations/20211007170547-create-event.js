@@ -26,6 +26,12 @@ module.exports = {
       date: {
         type: Sequelize.DATE,
       },
+      attending: {
+        type: Sequelize.BOOLEAN,
+      },
+      eventAttendees: {
+        type: Sequelize.INTEGER,
+      },
       locationId: {
         type: Sequelize.INTEGER,
         references: { model: "Locations" },
@@ -39,11 +45,9 @@ module.exports = {
         references: { model: "Types" },
       },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE,
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE,
       },
     });

@@ -21,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
       date: {
         type: DataTypes.DATE,
       },
+      attending: {
+        type: DataTypes.BOOLEAN,
+      },
       locationId: {
         type: DataTypes.INTEGER,
         references: { model: "Locations" },
@@ -32,6 +35,9 @@ module.exports = (sequelize, DataTypes) => {
       typeId: {
         type: DataTypes.INTEGER,
         references: { model: "Types" },
+      },
+      eventAttendees: {
+        type: DataTypes.INTEGER,
       },
     },
     {}
@@ -46,11 +52,10 @@ module.exports = (sequelize, DataTypes) => {
     Event.belongsToMany(models.User, columnMapping);
     Event.belongsTo(models.Location, { foreignKey: "locationId" });
     Event.belongsTo(models.Type, { foreignKey: "typeId" });
+    Event.belongsTo(models.User, { foreignKey: "ownerId" });
   };
   return Event;
 };
-
-
 
 
 

@@ -4,7 +4,7 @@ export const Section1 = () => {
     <div className="marginDiv">
       <div className="sectionDiv">
         <div className="leftDiv">
-          <h1>Dive in! There are so many things to do on Meetup</h1>
+          <h1>Dive in! There are so many things to do on Pickup</h1>
           <p>
             Join a group to meet people, make friends, find support, grow a
             business, and explore your interests. Thousands of events are
