@@ -10,8 +10,7 @@ module.exports = {
           name: "Sunday Friendly Pickup Basketball",
           description:
             "Update Sept 17th: Starting Sun Sept 19th, we will be in Central Park North Meadow every Sunday for Fall, and welcoming all comers! Games start at 2:00pm promptly, and go till tired (or till dark, in November).",
-          image:
-            "https://res.cloudinary.com/dis83syog/image/upload/v1633831643/Pickup/Basketball_ezq5av.jpg",
+          image: "https://res.cloudinary.com/dis83syog/image/upload/v1633831643/Pickup/Basketball_ezq5av.jpg",
           time: "11:00 AM to 12:30 PM",
           date: "Sunday, October 24, 2021",
           attending: false,
@@ -26,8 +25,7 @@ module.exports = {
           name: "Pickup Baseball",
           description:
             "Games are set up for 2 6v6 or rotation 8v8 games (24 attendees) If games are full, they are full.",
-          image:
-            "https://res.cloudinary.com/dis83syog/image/upload/v1633831740/Pickup/Baseball_vfr7bh.jpg",
+          image: "",
           time: "3:30PM to 5:30 PM",
           date: "Tuesday, October 26, 2021",
           attending: false,
