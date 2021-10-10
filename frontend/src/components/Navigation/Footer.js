@@ -4,10 +4,16 @@ export const Footer = () => {
       <div className="socialMedia">
         <label>Ann Donnelly</label>
         <a href="https://github.com/anndonnelly">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+            alt="githubLogo"
+          />
         </a>
         <a href="https://www.linkedin.com/in/ann-donnelly/">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg" />
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg"
+            alt="linkedInLogo"
+          />
         </a>
       </div>
     </div>

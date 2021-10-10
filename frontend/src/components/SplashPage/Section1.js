@@ -5,8 +5,8 @@ export const Section1 = () => {
         <div className="leftDiv">
           <h1>Dive in! There are so many things to do on Pickup</h1>
           <p>
-            Join a group to meet people, make friends, find support, grow a
-            business, and explore your interests. Thousands of events are
+            For people who want to exercise together in public. Join a group to meet people, 
+            make friends, find support, grow and explore your interests. Thousands of events are
             happening every day, both online and in person!
           </p>
         </div>

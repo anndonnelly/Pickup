@@ -5,17 +5,17 @@ export const Section2 = () => {
         <img
           src="https://res.cloudinary.com/dis83syog/image/upload/v1633829428/Pickup/DowntownPickupSoccer_yfxl9w.png"
           className="section2image"
-          alt="Unable to load"
+          alt="Pickup Soccer"
         />
         <img
           src="https://res.cloudinary.com/dis83syog/image/upload/v1633829546/Pickup/Rooftop2_o7ibiw.png"
           className="section2image"
-          alt="Unable to load"
+          alt="Rooftop"
         />
         <img
           src="https://res.cloudinary.com/dis83syog/image/upload/v1633829627/Pickup/RunningClub_yb80tb.png"
           className="section2image"
-          alt="Unable to load"
+          alt="Running Club"
         />
       </div>
     </div>
