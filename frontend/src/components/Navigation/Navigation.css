@@ -70,3 +70,10 @@
 }
 
 
+.logo {
+ 
+  justify-content: flex-start;
+  margin-left: 10px;
+  height: 2.5cm;
+  width: 4cm;
+}

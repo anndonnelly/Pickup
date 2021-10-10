@@ -12,14 +12,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.TEXT,
       },
-      time: {
-        type: DataTypes.INTEGER,
+      image: {
+        type: DataTypes.BLOB,
       },
-      endTime: {
-        type: DataTypes.INTEGER,
+      time: {
+        type: DataTypes.STRING,
       },
       date: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
       },
       attending: {
         type: DataTypes.BOOLEAN,

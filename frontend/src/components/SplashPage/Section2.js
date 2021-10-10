@@ -1,11 +1,22 @@
-import image1 from "../../images/sportsIconsTranspo.png";
 export const Section2 = () => {
   return (
     <div className="marginDiv">
       <div className="sectionDiv">
-        <img src={image1} className="section2image" alt="Unable to load" />
-        <img src={image1} className="section2image" alt="Unable to load" />
-        <img src={image1} className="section2image" alt="Unable to load" />
+        <img
+          src="https://res.cloudinary.com/dis83syog/image/upload/v1633829428/Pickup/DowntownPickupSoccer_yfxl9w.png"
+          className="section2image"
+          alt="Unable to load"
+        />
+        <img
+          src="https://res.cloudinary.com/dis83syog/image/upload/v1633829546/Pickup/Rooftop2_o7ibiw.png"
+          className="section2image"
+          alt="Unable to load"
+        />
+        <img
+          src="https://res.cloudinary.com/dis83syog/image/upload/v1633829627/Pickup/RunningClub_yb80tb.png"
+          className="section2image"
+          alt="Unable to load"
+        />
       </div>
     </div>
   );

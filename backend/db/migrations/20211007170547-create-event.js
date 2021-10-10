@@ -17,14 +17,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      time: {
-        type: Sequelize.INTEGER,
+      image: {
+        type: Sequelize.BLOB,
       },
-      endTime: {
-        type: Sequelize.INTEGER,
+      time: {
+        type: Sequelize.STRING,
       },
       date: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
       },
       attending: {
         type: Sequelize.BOOLEAN,

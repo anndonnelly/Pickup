@@ -43,10 +43,10 @@ module.exports = {
           name: "Running",
         },
         {
-          name: "Softball",
+          name: "Pickleball",
         },
         {
-          name: "Martial Arts",
+          name: "Softball",
         },
         {
           name: "November Project",

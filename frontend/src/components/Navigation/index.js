@@ -27,10 +27,14 @@ function Navigation({ isLoaded }) {
       <div className="nav-container">
         <div className="home-container">
           <NavLink className="home-button" exact to="/">
-            Home
+            <img
+              src="https://res.cloudinary.com/dis83syog/image/upload/v1633829306/Pickup/PickupLogo_spe2lt.png"
+              className="logo"
+              alt="logo"
+            />
           </NavLink>
         </div>
-          <div className="nav-buttons">{isLoaded && sessionLinks}</div>
+        <div className="nav-buttons">{isLoaded && sessionLinks}</div>
       </div>
     </div>
   );

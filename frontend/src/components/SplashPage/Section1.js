@@ -1,4 +1,3 @@
-import image1 from "../../images/sportsIconsTranspo.png";
 export const Section1 = () => {
   return (
     <div className="marginDiv">
@@ -12,7 +11,11 @@ export const Section1 = () => {
           </p>
         </div>
         <div className="rightDiv">
-          <img src={image1} className="section1image" alt="Unable to load" />
+          <img
+            src="https://res.cloudinary.com/dis83syog/image/upload/v1633808573/Pickup/sportsIconsTranspo_bdvjzd.png"
+            className="section1image"
+            alt="Sports Icon"
+          />
         </div>
       </div>
     </div>
