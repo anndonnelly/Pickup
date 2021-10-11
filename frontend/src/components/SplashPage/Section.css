@@ -8,12 +8,13 @@
 }
 .sectionDiv {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 100%;
 }
 
 .leftDiv {
   width: 50%;
+  padding-top: 40px;
 }
 .rightDiv {
   width: 50%;
@@ -21,7 +22,6 @@
 
 .section1image {
   width: 100%;
-  
 }
 .section2image {
   width: 30%;

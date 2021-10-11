@@ -9,6 +9,9 @@ body {
   background: url("https://res.cloudinary.com/dis83syog/image/upload/v1633808567/Pickup/pnkBlobTranspo_uwycce.png") left bottom no-repeat,
     url("https://res.cloudinary.com/dis83syog/image/upload/v1633933840/Pickup/peachblob3_jwjcxg.png") right top no-repeat ,
     url("https://res.cloudinary.com/dis83syog/image/upload/v1633808559/Pickup/blueBlobTranspo_zxggj4.png") right bottom no-repeat,
+    /* url("https://res.cloudinary.com/dis83syog/image/upload/v1633935010/Pickup/purple-blob_btre1n.png") left top  no-repeat , */
     url("https://res.cloudinary.com/dis83syog/image/upload/v1633808578/Pickup/tealBlobTranspo_tyynpm.png") center no-repeat;
   height: 700px;
 }
+
+/* TODO get smaller purple blob */

@@ -1,10 +1,14 @@
-.event-list{
-    margin-top: 200px;
+.event-list {
+  margin-top: 200px;
 }
 
-main {
-    margin-top: 599px;
-}
+/* main {
+  margin-top: 599px;
+} */
 
 /* ^ put here as it logout functionality was blocked before it  */
 
+.event-image {
+  height: 100px;
+  width: 200px;
+}

@@ -27,7 +27,8 @@ module.exports = {
           name: "Pickup Baseball",
           description:
             "Games are set up for 2 6v6 or rotation 8v8 games (24 attendees) If games are full, they are full.",
-          image: "",
+          image:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1633831740/Pickup/Baseball_vfr7bh.jpg",
           time: "3:30PM to 5:30 PM",
           // date: faker.date.between("2021-10-23", "2021-11-23"),
           date: "2021/10/01",

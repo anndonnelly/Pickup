@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       image: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
       },
       time: {
         type: Sequelize.STRING,

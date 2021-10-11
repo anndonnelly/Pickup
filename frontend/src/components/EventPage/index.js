@@ -1,30 +1,35 @@
-
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getEvents } from "../../store/event";
 import CreateEventModal from "../CreateEventModal";
+import "./EventPage.css";
 
 const EventPage = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const events = useSelector(state => {
-    return state.event.list.map(eventId=> eventId.name)
-  })
+  //  const eventNames = useSelector((state) => {
+  //    return state.event.list.map((eventId) => eventId.name);
+  //  });
 
+  const eventImages = useSelector((state) => {
+    return state.event.list.map((eventId) => eventId.image);
+  });
 
-useEffect(()=> {
-  dispatch(getEvents())
-}, [dispatch])
+  useEffect(() => {
+    dispatch(getEvents());
+  }, [dispatch]);
 
-if(!events){
-  return null
-}
+  if (!eventImages) {
+    return null;
+  }
 
   return (
     <main>
       <ul className="event-list">
-        {events.map((event) => (
-          <li>{`${event}`}</li>
+        {eventImages.map((event) => (
+          <li>
+            <img className="event-image" src={event} alt="" />
+          </li>
         ))}
       </ul>
       <CreateEventModal />
@@ -33,4 +38,3 @@ if(!events){
 };
 
 export default EventPage;
-
