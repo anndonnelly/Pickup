@@ -1,8 +1,14 @@
 const LOAD = "event/LOAD";
+const ADD_ONE = "event/ADD_ONE"
 
 const load = list => ({
     type: LOAD,
     list
+})
+
+const addEvent = event => ({
+  type: ADD_ONE,
+  event
 })
 
 export const getEvents = () => async dispatch => {
@@ -12,6 +18,21 @@ export const getEvents = () => async dispatch => {
         const listEvents = await res.json()
         dispatch(load(listEvents));
     }
+}
+
+// thunk
+export const createEvent = (payload) => async dispatch => {
+  const res = await fetch("api/events", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(payload)
+  })
+
+   if (res.ok) {
+     const newEvent = await res.json();
+     dispatch(addEvent(newEvent));
+   }
+
 }
 
 const initialState = {
@@ -28,8 +49,29 @@ export const eventReducer = (state = initialState, action) => {
         allEvents[event.id] = event;
       });
       return {
-        ...allEvents, ...state, list: action.list
+        ...allEvents,
+        ...state,
+        list: action.list,
       };
+    }
+    case ADD_ONE: {
+      if (!state[action.event.id]) {
+        // if this event id doesn't already exist
+        const newState = {
+          ...state,
+          [action.event.id]: action.event
+        };
+        const eventList = newState.list.map((id) => newState[id]);
+        eventList.push(action.event);
+        return newState;
+      }
+      return {
+        ...state,
+        [action.event.id]: {
+          ...state[action.event.id],
+          ...action.event
+        }
+      }
     }
     default:
       return state;
