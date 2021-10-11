@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: flex-end;
-  height: 40px;
+  height: 100px;
   width: 100%;
   /* background-color: blue; */
 }
@@ -31,6 +31,11 @@
   width: 50%;
 }
 
+.nav-buttons a i {
+  text-decoration: none;
+  font-size: 25px;
+  padding: 20px;
+}
 .login-button {
   background-color: green;
   /* margin-left: 250px; */

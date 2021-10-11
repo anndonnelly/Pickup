@@ -7,14 +7,10 @@ import "./EventPage.css";
 const EventPage = () => {
   const dispatch = useDispatch();
 
-  
-
   const events = useSelector((state) => {
     return state.event.list;
-   
   });
   // console.log(eventImages);
- 
 
   useEffect(() => {
     dispatch(getEvents());
@@ -26,14 +22,17 @@ const EventPage = () => {
 
   return (
     <main>
-      <ul className="event-list">
+      <div className="mainCard">
         {events.map((event) => (
-          <li key={event}>
+          <div className="cardDiv">
             <img className="event-image" src={event.image} alt="event" />
-            {event.name}
-          </li>
+            <div className="cardDivContent">
+              <p>{event.name}</p>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
+
       <CreateEventModal />
     </main>
   );

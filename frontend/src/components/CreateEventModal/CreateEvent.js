@@ -10,7 +10,7 @@ function CreateEventForm() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [time, setTime] = useState("");
-  const [date, setDate] = useState("YYYY/MM/DD");
+  const [date, setDate] = useState("");
   const [eventAttendees, setEventAttendees] = useState(0);
 
 
@@ -54,18 +54,9 @@ function CreateEventForm() {
             />
           </div>
           <div className="fieldDiv">
-            <label>Time</label>
+            <label>Time and Date</label>
             <input
-              type="string"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
-              required
-            />
-          </div>
-          <div className="fieldDiv">
-            <label>Date</label>
-            <input
-              type="date"
+              type="datetime-local"
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
