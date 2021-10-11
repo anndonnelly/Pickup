@@ -7,28 +7,30 @@ import "./EventPage.css";
 const EventPage = () => {
   const dispatch = useDispatch();
 
-  //  const eventNames = useSelector((state) => {
-  //    return state.event.list.map((eventId) => eventId.name);
-  //  });
+  
 
-  const eventImages = useSelector((state) => {
-    return state.event.list.map((eventId) => eventId.image);
+  const events = useSelector((state) => {
+    return state.event.list;
+   
   });
+  // console.log(eventImages);
+ 
 
   useEffect(() => {
     dispatch(getEvents());
   }, [dispatch]);
 
-  if (!eventImages) {
+  if (!events) {
     return null;
   }
 
   return (
     <main>
       <ul className="event-list">
-        {eventImages.map((event) => (
-          <li>
-            <img className="event-image" src={event} alt="" />
+        {events.map((event) => (
+          <li key={event}>
+            <img className="event-image" src={event.image} alt="event" />
+            {event.name}
           </li>
         ))}
       </ul>
