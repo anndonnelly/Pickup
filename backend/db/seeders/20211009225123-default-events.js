@@ -1,8 +1,8 @@
-'use strict';
-      
+("use strict");
+const faker = require("faker");
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    
     return queryInterface.bulkInsert(
       "Events",
       [
@@ -13,29 +13,30 @@ module.exports = {
           image:
             "https://res.cloudinary.com/dis83syog/image/upload/v1633831643/Pickup/Basketball_ezq5av.jpg",
           time: "11:00 AM to 12:30 PM",
-          date: "Sunday, October 24, 2021",
+          // date: faker.date.between("2021-10-23", "2021-11-23"),
+          date: "2021/10/01",
           attending: false,
           eventAttendees: 6,
           locationId: 1,
           ownerId: 2,
           typeId: 3,
-          createdAt: new Date(),
+          createdAt: faker.date.past(1),
           updatedAt: new Date(),
         },
         {
           name: "Pickup Baseball",
           description:
             "Games are set up for 2 6v6 or rotation 8v8 games (24 attendees) If games are full, they are full.",
-          image:
-            "https://res.cloudinary.com/dis83syog/image/upload/v1633831740/Pickup/Baseball_vfr7bh.jpg",
+          image: "",
           time: "3:30PM to 5:30 PM",
-          date: "Tuesday, October 26, 2021",
+          // date: faker.date.between("2021-10-23", "2021-11-23"),
+          date: "2021/10/01",
           attending: false,
           eventAttendees: 8,
           locationId: 2,
           ownerId: 3,
           typeId: 8,
-          createdAt: new Date(),
+          createdAt: faker.date.past(1),
           updatedAt: new Date(),
         },
         {
@@ -45,13 +46,14 @@ module.exports = {
           image:
             "https://res.cloudinary.com/dis83syog/image/upload/v1633831538/Pickup/WomensSoccer_ksxwmu.png",
           time: "11:00 AM to 12:30 PM",
-          date: "Sunday, October 31, 2021",
+          // date: faker.date.between("2021-10-23", "2021-11-23"),
+          date: "2021/10/01",
           attending: false,
           eventAttendees: 5,
           locationId: 3,
           ownerId: 4,
           typeId: 2,
-          createdAt: new Date(),
+          createdAt: faker.date.past(1),
           updatedAt: new Date(),
         },
         {
@@ -61,13 +63,14 @@ module.exports = {
           image:
             "https://res.cloudinary.com/dis83syog/image/upload/v1633829428/Pickup/DowntownPickupSoccer_yfxl9w.png",
           time: "9:30 AM to 11:00 AM",
-          date: "Saturday, October 23, 2021",
+          // date: faker.date.between("2021-10-23", "2021-11-23"),
+          date: "2021/10/01",
           attending: false,
           eventAttendees: 7,
           locationId: 4,
           ownerId: 5,
           typeId: 2,
-          createdAt: new Date(),
+          createdAt: faker.date.past(1),
           updatedAt: new Date(),
         },
         {
@@ -77,24 +80,22 @@ module.exports = {
           image:
             "https://res.cloudinary.com/dis83syog/image/upload/v1633831295/Pickup/NovemberProject_indvpj.jpg",
           time: "6:30 AM to 7:30 AM",
-          date: "Thurday, October 28, 2021",
+          // date: faker.date.between("2021-10-23", "2021-11-23"),
+          date: "2020/10/01",
           attending: false,
           eventAttendees: 4,
           locationId: 5,
           ownerId: 6,
           typeId: 15,
-          createdAt: new Date(),
+          createdAt: faker.date.past(1),
           updatedAt: new Date(),
         },
       ],
       {}
     );
-    
   },
 
   down: (queryInterface, Sequelize) => {
-   
-  return queryInterface.bulkDelete('Events', null, {});
-   
-  }
+    return queryInterface.bulkDelete("Events", null, {});
+  },
 };
