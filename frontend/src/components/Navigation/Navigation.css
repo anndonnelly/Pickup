@@ -36,6 +36,10 @@
   /* margin-left: 250px; */
 }
 
+.logout-button{
+  z-index: 7;
+}
+
 .home-container {
   width: 50%;
 }
@@ -68,7 +72,6 @@
 .nav-buttons a:hover {
   color: rgba(0, 130, 148, 1);
 }
-
 
 .logo {
   justify-content: flex-start;
