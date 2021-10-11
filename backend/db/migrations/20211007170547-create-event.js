@@ -20,9 +20,9 @@ module.exports = {
       image: {
         type: Sequelize.STRING,
       },
-      time: {
-        type: Sequelize.STRING,
-      },
+      // time: {
+      //   type: Sequelize.STRING,
+      // },
       date: {
         type: Sequelize.DATE,
       },

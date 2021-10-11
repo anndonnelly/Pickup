@@ -12,6 +12,7 @@
 .event-image {
   height: 200px;
   width: 300px;
+  border-radius: 5px;
 }
 
 .mainCard {
@@ -20,7 +21,7 @@
   flex-direction: column;
   align-content: space-between;
   padding: 40px;
-  padding-left: 300px;
+  padding-left: 250px;
 }
 
 .cardDiv {
