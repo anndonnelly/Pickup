@@ -116,6 +116,23 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: "Forget the Gym",
+          description:
+            "Tempo workout for runners of all abilities! What's a Tempo workout, you ask?? Well, it's a continuous run where you focus on controlling your pace.Please take note of our attendance policies. You must RSVP in order to attend, masks are voluntary for vaccinated runners but mandatory for unvaccinated participants. RSVP window opens Monday @ 9am.",
+          image:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1634075894/Pickup/Screen_Shot_2021-10-12_at_5.57.27_PM_e6plgx.png",
+          // time: setTime(faker.date.between("2021-10-23", "2021-11-23")),
+          // date: faker.date.between("2021-10-23", "2021-11-23"),
+          date: "Sun, October 24, 2021, 08:00 AM",
+          attending: false,
+          eventAttendees: 15,
+          locationId: 2,
+          ownerId: 4,
+          typeId: 20,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

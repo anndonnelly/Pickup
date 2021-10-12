@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateEvent, getTypes } from "../../store/event";
 
-
 const EditEventForm = ({ event, setIsEditing }) => {
   const eventTypes = useSelector((state) => state.event.types);
   const eventLocations = useSelector((state) => state.event.locations);

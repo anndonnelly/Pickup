@@ -4,7 +4,7 @@ const ADD_ONE = "event/ADD_ONE"
 const LOAD_LOCATIONS = "event/LOAD_LOCATIONS";
 const LOAD_TYPES = "events/LOAD_TYPES";
 const UPDATE_EVENT = "events/UPDATE_EVENT";
-// const DELETE_EVENT = "items/REMOVE_ITEM";
+const DELETE_EVENT = "items/REMOVE_ITEM";
 
 const load = list => ({
     type: LOAD,
@@ -32,11 +32,10 @@ const update = (event) => ({
   event,
 });
 
-// const remove = (itemId, pokemonId) => ({
-//   type: REMOVE_ITEM,
-//   itemId,
-//   pokemonId,
-// });
+const remove = (eventId) => ({
+  type: DELETE_EVENT,
+  eventId,
+});
 
 export const getEvents = () => async dispatch => {
     const res = await csrfFetch("/api/events");
@@ -85,7 +84,6 @@ export const getTypes = () => async (dispatch) => {
   }
 };
 
-
 export const getOneEvent = (id) => async (dispatch) => {
   const res = await fetch(`/api/events/${id}`);
   
@@ -109,8 +107,18 @@ export const updateEvent = (data) => async (dispatch) => {
   if (response.ok) {
     const event = await response.json();
     dispatch(update(event));
-    console.log( ">>>>>>>>>>>", event)
     return event;
+  }
+};
+
+export const deleteEvent = (eventId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/events/${eventId}`, {
+    method: "delete",
+  });
+
+  if (response.ok) {
+    const event = await response.json();
+    dispatch(remove(event.id));
   }
 };
 
@@ -151,6 +159,11 @@ export const eventReducer = (state = initialState, action) => {
         ...state,
         types: action.types,
       };
+    }
+    case DELETE_EVENT: {
+      const newState = { ...state };
+      delete newState[action.eventId];
+      return newState;
     }
     default:
       return state;
