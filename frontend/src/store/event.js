@@ -117,9 +117,9 @@ export const deleteEvent = (eventId) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const event = await response.json();
-    console.log(event)
-    dispatch(remove(event));
+    const { eventId } = await response.json();
+    dispatch(remove(eventId));
+   
   }
 };
 
@@ -163,7 +163,9 @@ export const eventReducer = (state = initialState, action) => {
     }
     case DELETE_EVENT: {
       const newState = { ...state };
-      delete newState.list[action.eventId];
+      const newList = {...newState.list}
+      delete newList[action.eventId];
+      newState.list = newList;
       return newState;
     }
     default:

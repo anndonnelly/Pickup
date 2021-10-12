@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
 import { deleteEvent } from "../../store/event";
+import { getTypes } from "../../store/event";
 
 export const EventCard = ({ id, image, date, name, description}) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -25,7 +26,7 @@ export const EventCard = ({ id, image, date, name, description}) => {
     // const locationZipCode = event?.Location.zipCode;
 
   useEffect(() => {
-    dispatch(deleteEvent(id));
+    dispatch(getTypes());
   }, [dispatch]);
   
 
@@ -50,9 +51,10 @@ export const EventCard = ({ id, image, date, name, description}) => {
           {/* <p>{location}</p> */}
         </div>
         <div className="editCard">
-          <a value={isEditing} onClick={() => setIsEditing(true)} href="#">
+          <button value={isEditing} onClick={() => setIsEditing(true)}>
+            {/* href="#" */}
             Edit
-          </a>
+          </button>
           {isEditing && (
             <Modal onClose={() => setIsEditing(false)}>
               <EditEventForm
@@ -61,9 +63,10 @@ export const EventCard = ({ id, image, date, name, description}) => {
               />
             </Modal>
           )}
-          <a value={id} onClick={} href="#">
-            Delete
-          </a>
+          <button
+            value={id}
+            onClick={() => dispatch(deleteEvent(id))}
+          >Delete</button>
         </div>
       </div>
     );
