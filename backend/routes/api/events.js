@@ -13,6 +13,14 @@ router.get(
   })
 );
 
+router.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const event = await EventRepository.listEvent(req.params.id);
+    return res.json(event);
+  })
+);
+
 const validateEvent = [
   check("name")
     .exists({ checkFalsy: true })

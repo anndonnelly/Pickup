@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import { Footer } from "./components/Navigation/Footer";
 import { SplashPage } from "./components/SplashPage/SplashPage";
 import EventPage from "./components/EventPage";
+import OneEvent from "./components/SingleEvent";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,8 +27,11 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/events">
+          <Route exact path="/events">
             <EventPage />
+          </Route>
+          <Route path="/events/:id">
+            <OneEvent />
           </Route>
         </Switch>
       )}

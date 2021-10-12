@@ -1,11 +1,11 @@
 ("use strict");
 const faker = require("faker");
 
-function setTime(date) {
-  let time = date.toString().split("T")[1];
-  time = time.split("").splice(0, 8).join("")
-  return time;
-}
+// function setTime(date) {
+//   let time = date.toString().split("T")[1];
+//   time = time.toString().split("").slice(0, 13).join("")
+//   return time;
+// }
 
 
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
             "https://res.cloudinary.com/dis83syog/image/upload/v1633831643/Pickup/Basketball_ezq5av.jpg",
           // time: "11:00 AM to 12:30 PM",
           // time: setTime(faker.date.between("2021-10-23", "2021-11-23")),
-          date: faker.date.between("2021-10-23", "2021-11-23"),
+          date: setTime(faker.date.between("2021-10-23", "2021-11-23")),
           // date: "2021/10/01",
           attending: false,
           eventAttendees: 6,

@@ -17,8 +17,10 @@ function CreateEventForm({ setShowEventModal }) {
   const [image, setImage] = useState("");
   const [date, setDate] = useState("");
   const [eventAttendees, setEventAttendees] = useState(0);
-  const [typeId, setTypeId] = useState(0);
-  const [locationId, setLocationId] = useState(0);
+  const [typeId, setTypeId] = useState(1);
+  const [locationId, setLocationId] = useState(1);
+  const [address, setAddress] = useState("");
+  
 
   useEffect(() => {
     dispatch(getLocations());
@@ -45,7 +47,7 @@ function CreateEventForm({ setShowEventModal }) {
       setShowEventModal(false);
     }
   };
-  console.log(typeId)
+  // console.log(typeId)
   return (
     <div className="createEventModal">
       <div className="modalHeader">
@@ -110,6 +112,12 @@ function CreateEventForm({ setShowEventModal }) {
                 </option>
               ))}
             </select>
+            <label>Address 2</label>
+            <input
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
           </div>
           <div className="fieldDiv">
             <label>Types</label>

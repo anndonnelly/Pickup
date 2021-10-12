@@ -31,6 +31,8 @@ const EventPage = () => {
             <img className="event-image" src={event.image} alt="event" />
             <div className="cardDivContent">
               <p>{event.name}</p>
+              <p>{event.description}</p>
+              {/* <p>{event.date}</p> */}
             </div>
           </div>
         ))}

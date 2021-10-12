@@ -1,6 +1,7 @@
 /* TODO Add site wide styles */
 body {
   height: 100%;
+  /* overflow: hidden; */
 }
 .pageDiv {
   display: flex;

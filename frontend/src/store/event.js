@@ -2,7 +2,8 @@ import { csrfFetch } from "./csrf";
 const LOAD = "event/LOAD";
 const ADD_ONE = "event/ADD_ONE"
 const LOAD_LOCATIONS = "event/LOAD_LOCATIONS";
-const LOAD_TYPES = "events/LOAD_TYPES"
+const LOAD_TYPES = "events/LOAD_TYPES";
+// const GET_ONE = "events/GET_ONE";
 
 const load = list => ({
     type: LOAD,
@@ -13,6 +14,7 @@ const addEvent = event => ({
   type: ADD_ONE,
   event
 })
+// means add to state
 
 const loadLocations = (location) => ({
   type: LOAD_LOCATIONS,
@@ -31,12 +33,13 @@ export const getEvents = () => async dispatch => {
     if (res.ok){
         const listEvents = await res.json()
         dispatch(load(listEvents));
+        return listEvents;
     }
 }
 
 // thunk
 export const createEvent = (payload) => async dispatch => {
-  const res = await csrfFetch("api/events", {
+  const res = await csrfFetch("/api/events", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -57,17 +60,30 @@ export const getLocations = () => async(dispatch)=> {
     const locations = await res.json();
     // list of all locations in a json obj
     dispatch(loadLocations(locations));
+    return locations;
   }
 }
 
 export const getTypes = () => async (dispatch) => {
-  const res = await csrfFetch("api/types");
+  const res = await csrfFetch("/api/types");
 
   if (res.ok) {
     const types = await res.json();
     dispatch(loadTypes(types));
+    return types;
   }
 };
+
+
+export const getOneEvent = (id) => async (dispatch) => {
+  const res = await fetch(`/api/events/${id}`);
+
+    if (res.ok) {
+      const event = await res.json();
+      dispatch(addEvent(event));
+      return event;
+    }
+}
 
 const initialState = {
     list: [],
