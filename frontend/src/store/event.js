@@ -77,12 +77,12 @@ export const getTypes = () => async (dispatch) => {
 
 export const getOneEvent = (id) => async (dispatch) => {
   const res = await fetch(`/api/events/${id}`);
-
-    if (res.ok) {
-      const event = await res.json();
-      dispatch(addEvent(event));
-      return event;
-    }
+  
+  if (res.ok) {
+    const event = await res.json();
+    dispatch(addEvent(event));
+    return event;
+  }
 }
 
 const initialState = {

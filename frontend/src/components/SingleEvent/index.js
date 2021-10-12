@@ -1,29 +1,38 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getOneEvent } from "../../store/event";
-
-
-// import PokemonItems from "./PokemonItems";
-
-
+import { getLocations } from "../../store/event";
 
 const OneEvent = () => {
   const { eventId } = useParams();
-  const event = useSelector((state) => state.event[eventId]);
   const dispatch = useDispatch();
+  const event = useSelector((state) => {
+      return state.event.list[eventId]
+    });
   
-//   const [showEditPokeForm, setShowEditPokeForm] = useState(false);
-//   const [editItemId, setEditItemId] = useState(null);
-
+  //  const location = useSelector((state) => {
+  //    return state.event.list[locationId];
+  //  });
   useEffect(() => {
     dispatch(getOneEvent(eventId));
-    // setShowEditPokeForm(false);
-    // setEditItemId(null);
+    dispatch(getLocations());
   }, [dispatch, eventId]);
-
+  //  const location = getLocations.find(event.locationId === location.id);
+  //  console.log(location, "jznjabzjabzjab");
   return (
-    <h1>poop</h1>
+    <>
+      <div className="mainCard">
+        <div className="cardDiv">
+          <img className="event-image" src={event?.image} alt="event" />
+          <div className="cardDivContent">
+            <p>{event?.name}</p>
+            <p>{event?.description}</p>
+            <p>{event?.locationId.name}</p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

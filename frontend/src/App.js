@@ -30,7 +30,7 @@ function App() {
           <Route exact path="/events">
             <EventPage />
           </Route>
-          <Route path="/events/:id">
+          <Route path="/events/:eventId">
             <OneEvent />
           </Route>
         </Switch>

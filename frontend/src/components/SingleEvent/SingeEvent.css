@@ -1,0 +1,28 @@
+.event-image {
+  height: 200px;
+  width: 300px;
+  border-radius: 5px;
+}
+
+.mainCard {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-content: space-between;
+  padding: 40px;
+  padding-left: 250px;
+}
+
+.cardDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardDiv:hover {
+  box-shadow: 0 16px 64px -16px rgb(46 55 77 / 10%);
+}
+.cardDivContent {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
