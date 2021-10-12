@@ -1,4 +1,4 @@
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ProfileButton from "./ProfileButton";
@@ -9,17 +9,18 @@ import "./Navigation.css";
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
- 
+
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
 
-  const demoLogin = async () => {
-    setCredential("Demo-lition")
-    setPassword("password")
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    setCredential("Demo-lition");
+    setPassword("password");
     return dispatch(
       sessionActions.login({ credential: "Demo-lition", password: "password" })
     );
-  }
+  };
 
   let sessionLinks;
   if (sessionUser) {
@@ -27,13 +28,13 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
-        <button className="demo-user" onClick={demoLogin}>
-          Demo User
-        </button>
         <LoginFormModal />
         <NavLink className="signupbutton" to="/signup">
           Sign Up
         </NavLink>
+        <a href="#" onClick={demoLogin}>
+          Demo User
+        </a>
       </>
     );
   }

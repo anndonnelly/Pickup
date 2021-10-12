@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
       },
       description: {
-        allowNull: false,
+        // allowNull: false,
         type: DataTypes.TEXT,
       },
       image: {

@@ -37,7 +37,6 @@
   padding: 20px;
 }
 
-
 .profile-dropdown {
   z-index: 7;
 }
@@ -52,6 +51,7 @@
 
 .footerDiv {
   display: flex;
+  margin-left: 20px;
 }
 
 .footerDiv a img {

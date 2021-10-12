@@ -26,10 +26,10 @@ const validateEvent = [
     .exists({ checkFalsy: true })
     .isLength({ min: 4 })
     .withMessage("Please provide an event name with at least 4 characters."),
-  check("description")
-    .exists({ checkFalsy: true })
-    .isLength({ min: 20 })
-    .withMessage("Please provide a description of the event you are hosting"),
+  // check("description")
+  //   .exists({ checkFalsy: true })
+  //   .isLength({ min: 20 })
+  //   .withMessage("Please provide a description of the event you are hosting"),
   // check("time")
   //   .exists({ checkFalsy: true })
   //   .isLength({ min: 4 })

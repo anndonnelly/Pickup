@@ -22,11 +22,19 @@
   align-content: space-between;
   padding: 40px;
   padding-left: 250px;
+
+  min-height: 68vh;
 }
 
+.eventButtons {
+  width: 80%;
+  display: flex;
+  flex-direction: row-reverse;
+}
 .cardDiv {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 .cardDiv:hover {
@@ -36,4 +44,19 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
+  width: 50%;
+}
+.font-bold {
+  font-weight: 600;
+}
+
+.editCard a {
+  padding-left: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgba(0, 130, 148, var(--tw-text-opacity));
+}
+
+.editCard a:hover {
+  color: rgba(0, 130, 148, 1);
 }

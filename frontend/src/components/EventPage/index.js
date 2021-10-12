@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getEvents } from "../../store/event";
 import CreateEventModal from "../CreateEventModal";
-import "./EventPage.css";
-
+import { EventCard } from "./EventCard";
 const EventPage = () => {
   const dispatch = useDispatch();
 
@@ -26,19 +25,15 @@ const EventPage = () => {
   return (
     <main>
       <div className="mainCard">
+        <div className="eventButtons">
+          <CreateEventModal />
+          <CreateEventModal />
+        </div>
+
         {events?.map((event) => (
-          <div className="cardDiv">
-            <img className="event-image" src={event.image} alt="event" />
-            <div className="cardDivContent">
-              <p>{event.name}</p>
-              <p>{event.description}</p>
-              {/* <p>{event.date}</p> */}
-            </div>
-          </div>
+          <EventCard {...event} />
         ))}
       </div>
-
-      <CreateEventModal />
     </main>
   );
 };

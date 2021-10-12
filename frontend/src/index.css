@@ -1,17 +1,23 @@
 /* TODO Add site wide styles */
 body {
   height: 100%;
+  font-family: Graphik Meetup, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica, Arial, sans-serif;
   /* overflow: hidden; */
 }
 .pageDiv {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: url("https://res.cloudinary.com/dis83syog/image/upload/v1633808567/Pickup/pnkBlobTranspo_uwycce.png") left bottom no-repeat,
-    url("https://res.cloudinary.com/dis83syog/image/upload/v1633933840/Pickup/peachblob3_jwjcxg.png") right top no-repeat ,
-    url("https://res.cloudinary.com/dis83syog/image/upload/v1633808559/Pickup/blueBlobTranspo_zxggj4.png") right bottom no-repeat,
+  background: url("https://res.cloudinary.com/dis83syog/image/upload/v1633808567/Pickup/pnkBlobTranspo_uwycce.png")
+      left bottom no-repeat,
+    url("https://res.cloudinary.com/dis83syog/image/upload/v1633933840/Pickup/peachblob3_jwjcxg.png")
+      right top no-repeat,
+    url("https://res.cloudinary.com/dis83syog/image/upload/v1633808559/Pickup/blueBlobTranspo_zxggj4.png")
+      right bottom no-repeat,
     /* url("https://res.cloudinary.com/dis83syog/image/upload/v1633935010/Pickup/purple-blob_btre1n.png") left top  no-repeat , */
-    url("https://res.cloudinary.com/dis83syog/image/upload/v1633808578/Pickup/tealBlobTranspo_tyynpm.png") center no-repeat;
+      url("https://res.cloudinary.com/dis83syog/image/upload/v1633808578/Pickup/tealBlobTranspo_tyynpm.png")
+      center no-repeat;
   height: 700px;
 }
 

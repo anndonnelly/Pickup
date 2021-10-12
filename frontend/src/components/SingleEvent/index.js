@@ -3,14 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getOneEvent } from "../../store/event";
 import { getLocations } from "../../store/event";
-
+import { EventCard } from "../EventPage/EventCard";
 const OneEvent = () => {
   const { eventId } = useParams();
   const dispatch = useDispatch();
   const event = useSelector((state) => {
-      return state.event.list[eventId]
-    });
-  
+    return state.event.list[eventId] ?? {};
+  });
+
   //  const location = useSelector((state) => {
   //    return state.event.list[locationId];
   //  });
@@ -23,14 +23,7 @@ const OneEvent = () => {
   return (
     <>
       <div className="mainCard">
-        <div className="cardDiv">
-          <img className="event-image" src={event?.image} alt="event" />
-          <div className="cardDivContent">
-            <p>{event?.name}</p>
-            <p>{event?.description}</p>
-            <p>{event?.locationId.name}</p>
-          </div>
-        </div>
+        <EventCard {...event} isEditEnable />
       </div>
     </>
   );

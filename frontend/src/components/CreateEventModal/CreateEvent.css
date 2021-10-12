@@ -1,13 +1,13 @@
 .createEventModal {
   width: 400px;
-  margin: 50px;
+  margin: 10px 50px;
   border-radius: 4px;
   /* overflow-y:scroll; */
 }
 .fieldDiv {
   display: flex;
   flex-direction: column;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .fieldDiv label {
@@ -17,7 +17,7 @@
 }
 
 .fieldDiv input {
-  height: 38px;
+  height: 25px;
   border-radius: 10px;
   border: 1px solid lightgray;
 }
@@ -26,6 +26,9 @@
   text-align: center;
 }
 
+.create-event-container {
+  margin-right: 20px;
+}
 .createEventButton button {
   width: 100%;
   height: 50px;
@@ -35,4 +38,20 @@
   background-color: #f65858;
   border-color: #f65858;
   padding: 8px 12px;
+}
+.create-event-button {
+  width: 120px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  background-color: rgba(0, 130, 148, 1);
+  border-color: rgba(0, 130, 148, 1);
+  padding: 4px 8px;
+  margin-bottom: 20px;
+}
+
+.image-upload {
+  border-style: none !important;
+  padding-left: 6px;
 }

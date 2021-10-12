@@ -4,10 +4,13 @@ import LoginForm from "./LoginForm";
 
 function LoginFormModal() {
   const [showModal, setShowModal] = useState(false);
-
+  const loginHandler = (e) => {
+    e.preventDefault();
+    setShowModal(true);
+  };
   return (
     <div className="login-button-container">
-      <a href="#" onClick={() => setShowModal(true)}>
+      <a href="#" onClick={loginHandler}>
         Log in
       </a>
       {showModal && (

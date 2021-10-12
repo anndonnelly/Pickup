@@ -1,5 +1,5 @@
 ("use strict");
-const faker = require("faker");
+// const faker = require("faker");
 
 // function setTime(date) {
 //   let time = date.toString().split("T")[1];
@@ -21,14 +21,14 @@ module.exports = {
             "https://res.cloudinary.com/dis83syog/image/upload/v1633831643/Pickup/Basketball_ezq5av.jpg",
           // time: "11:00 AM to 12:30 PM",
           // time: setTime(faker.date.between("2021-10-23", "2021-11-23")),
-          date: setTime(faker.date.between("2021-10-23", "2021-11-23")),
+          date: "Thu, November 18, 2021, 11:00 AM",
           // date: "2021/10/01",
           attending: false,
           eventAttendees: 6,
           locationId: 1,
           ownerId: 2,
           typeId: 3,
-          createdAt: faker.date.past(1),
+          createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
@@ -38,13 +38,14 @@ module.exports = {
           image:
             "https://res.cloudinary.com/dis83syog/image/upload/v1633831740/Pickup/Baseball_vfr7bh.jpg",
           // time: setTime(faker.date.between("2021-10-23", "2021-11-23")),
-          date: faker.date.between("2021-10-23", "2021-11-23"),
+          // date: faker.date.between("2021-10-23", "2021-11-23"),
+          date: "Sat, October 23, 2021, 11:30 AM",
           attending: false,
           eventAttendees: 8,
           locationId: 2,
           ownerId: 3,
           typeId: 8,
-          createdAt: faker.date.past(1),
+          createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
@@ -54,13 +55,14 @@ module.exports = {
           image:
             "https://res.cloudinary.com/dis83syog/image/upload/v1633831538/Pickup/WomensSoccer_ksxwmu.png",
           // time: setTime(faker.date.between("2021-10-23", "2021-11-23")),
-          date: faker.date.between("2021-10-23", "2021-11-23"),
+          // date: faker.date.between("2021-10-23", "2021-11-23"),
+          date: "Wed, November 17, 2021, 12:06 PM",
           attending: false,
           eventAttendees: 5,
           locationId: 3,
           ownerId: 4,
           typeId: 2,
-          createdAt: faker.date.past(1),
+          createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
@@ -70,13 +72,14 @@ module.exports = {
           image:
             "https://res.cloudinary.com/dis83syog/image/upload/v1633829428/Pickup/DowntownPickupSoccer_yfxl9w.png",
           // time: setTime(faker.date.between("2021-10-23", "2021-11-23")),
-          date: faker.date.between("2021-10-23", "2021-11-23"),
+          // date: faker.date.between("2021-10-23", "2021-11-23"),
+          date: "Tue, November 16, 2021, 7:00 PM",
           attending: false,
           eventAttendees: 7,
           locationId: 4,
           ownerId: 5,
           typeId: 2,
-          createdAt: faker.date.past(1),
+          createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
@@ -86,13 +89,14 @@ module.exports = {
           image:
             "https://res.cloudinary.com/dis83syog/image/upload/v1633831295/Pickup/NovemberProject_indvpj.jpg",
           // time: setTime(faker.date.between("2021-10-23", "2021-11-23")),
-          date: faker.date.between("2021-10-23", "2021-11-23"),
+          // date: faker.date.between("2021-10-23", "2021-11-23"),
+          date: "Thu, November 18, 2021, 06:00 AM",
           attending: false,
           eventAttendees: 4,
           locationId: 5,
           ownerId: 6,
           typeId: 15,
-          createdAt: faker.date.past(1),
+          createdAt: new Date(),
           updatedAt: new Date(),
         },
       ],
