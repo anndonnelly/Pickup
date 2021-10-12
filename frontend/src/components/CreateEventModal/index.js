@@ -15,7 +15,7 @@ function CreateEventModal() {
       </button>
       {showEventModal && (
         <Modal onClose={() => setShowEventModal(false)}>
-          <CreateEventForm />
+          <CreateEventForm setShowEventModal={setShowEventModal} />
         </Modal>
       )}
     </div>

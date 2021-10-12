@@ -7,7 +7,7 @@ const listEvents = async () => {
 
 const createEvent = async (details) => {
   const addEvent = await Event.create(details)
-  return addEvent.id;
+  return addEvent;
 };
 
 

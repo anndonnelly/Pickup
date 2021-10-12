@@ -20,7 +20,7 @@ const fakeLocationsNames = [
   "Tompkins Square Park",
   "Prospect Park"
 ];
-let locationNum = getRandomNum(0, fakeLocationsNames.length);
+let locationNum = getRandomNum(1, fakeLocationsNames.length);
 return fakeLocationsNames[locationNum];
 }
 
@@ -38,7 +38,7 @@ const fakeLocations = [
   },
 ];
 
-for (let i = 0; i < 50; i++){
+for (let i = 0; i < 11; i++){
   let newLocation = {
     name: `${randomLocations()}`,
     address: faker.address.streetAddress(),

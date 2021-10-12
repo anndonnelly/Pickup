@@ -1,3 +1,4 @@
+import { csrfFetch } from "./csrf";
 const LOAD = "event/LOAD";
 const ADD_ONE = "event/ADD_ONE"
 const LOAD_LOCATIONS = "event/LOAD_LOCATIONS";
@@ -25,7 +26,7 @@ const loadTypes = (types) => ({
 
 
 export const getEvents = () => async dispatch => {
-    const res = await fetch("/api/events")
+    const res = await csrfFetch("/api/events");
 
     if (res.ok){
         const listEvents = await res.json()
@@ -35,20 +36,21 @@ export const getEvents = () => async dispatch => {
 
 // thunk
 export const createEvent = (payload) => async dispatch => {
-  const res = await fetch("api/events", {
+  const res = await csrfFetch("api/events", {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(payload)
-  })
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
 
    if (res.ok) {
      const newEvent = await res.json();
      dispatch(addEvent(newEvent));
+     return newEvent;
    }
 }
 
 export const getLocations = () => async(dispatch)=> {
-  const res = await fetch("/api/locations")
+  const res = await csrfFetch("/api/locations");
   console.log(res)
 
   if (res.ok) {
@@ -59,7 +61,7 @@ export const getLocations = () => async(dispatch)=> {
 }
 
 export const getTypes = () => async (dispatch) => {
-  const res = await fetch("api/types");
+  const res = await csrfFetch("api/types");
 
   if (res.ok) {
     const types = await res.json();
@@ -81,30 +83,16 @@ export const eventReducer = (state = initialState, action) => {
       action.list.forEach((event) => {
         allEvents[event.id] = event;
       });
-      return {
-        ...allEvents,
-        ...state,
-        list: action.list,
-      };
+      return { ...state, list: allEvents };
     }
     case ADD_ONE: {
-      if (!state[action.event.id]) {
-        // if this event id doesn't already exist
-        const newState = {
+      const newList = {...state.list}
+        newList[action.event.id] = action.event
+      const newState = {
           ...state,
-          [action.event.id]: action.event,
-        };
-        const eventList = newState.list.map((id) => newState[id]);
-        eventList.push(action.event);
+          list: newList,
+        }
         return newState;
-      }
-      return {
-        ...state,
-        [action.event.id]: {
-          ...state[action.event.id],
-          ...action.event,
-        },
-      };
     }
     case LOAD_LOCATIONS: {
       return {

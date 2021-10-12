@@ -22,10 +22,10 @@ const validateEvent = [
     .exists({ checkFalsy: true })
     .isLength({ min: 20 })
     .withMessage("Please provide a description of the event you are hosting"),
-  check("time")
-    .exists({ checkFalsy: true })
-    .isLength({ min: 4 })
-    .withMessage("Please provide a start and end time for your event"),
+  // check("time")
+  //   .exists({ checkFalsy: true })
+  //   .isLength({ min: 4 })
+  //   .withMessage("Please provide a start and end time for your event"),
   check("date")
     .exists({ checkFalsy: true })
     .isAfter(new Date().toString())
@@ -41,7 +41,7 @@ router.post(
   "/", validateEvent,
   asyncHandler(async function (req, res) {
     const id = await EventRepository.createEvent(req.body);
-    return res.redirect(`${req.baseUrl}/${id}`);
+    return res.json(id);
   })
 );
 

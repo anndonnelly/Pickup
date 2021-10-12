@@ -1,33 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import "./CreateEvent.css";
 import { getLocations } from "../../store/event";
 import { getTypes } from "../../store/event";
+import { createEvent } from "../../store/event";
+import { useHistory } from "react-router";
+import "./CreateEvent.css";
 
-function CreateEventForm() {
+function CreateEventForm({ setShowEventModal }) {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const eventLocations = useSelector((state) => state.event.locations);
   const eventTypes = useSelector((state) => state.event.types);
-  const dispatch = useDispatch()
+  const ownerId = useSelector((state) => state.session.user.id);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [date, setDate] = useState("");
   const [eventAttendees, setEventAttendees] = useState(0);
+  const [typeId, setTypeId] = useState(0);
+  const [locationId, setLocationId] = useState(0);
 
   useEffect(() => {
     dispatch(getLocations());
     dispatch(getTypes());
-    
   }, [dispatch]);
 
-  //TODO ownerid for create event
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(date);
-  };
+    const payload = {
+      name,
+      description,
+      image,
+      date,
+      eventAttendees,
+      locationId,
+      ownerId,
+      typeId,
+    };
 
+    let createdEvent = await dispatch(createEvent(payload));
+    // createEvent was created in event store
+    if (createdEvent) {
+      history.push(`/events/${createdEvent.id}`);
+      setShowEventModal(false);
+    }
+  };
+  console.log(typeId)
   return (
     <div className="createEventModal">
       <div className="modalHeader">
@@ -82,17 +100,24 @@ function CreateEventForm() {
           </div>
           <div className="fieldDiv">
             <label>Locations</label>
-            <select>
+            <select
+              value={locationId}
+              onChange={(e) => setLocationId(e.target.value)}
+            >
               {eventLocations.map((location) => (
-                <option key={location.id}>{location.name}</option>
+                <option value={location.id} key={location.id}>
+                  {location.name}
+                </option>
               ))}
             </select>
           </div>
           <div className="fieldDiv">
             <label>Types</label>
-            <select>
+            <select value={typeId} onChange={(e) => setTypeId(e.target.value)}>
               {eventTypes.map((type) => (
-                <option key={type.id}>{type.name}</option>
+                <option value={type.id} key={type.id}>
+                  {type.name}
+                </option>
               ))}
             </select>
           </div>
@@ -105,8 +130,6 @@ function CreateEventForm() {
   );
 }
 
-// onChange={updateType} value={type} for Location select
-
 export default CreateEventForm;
 
 
@@ -117,3 +140,8 @@ export default CreateEventForm;
 // typeId: 3,
 // createdAt: faker.date.past(1),
 // updatedAt: new Date(),
+
+
+
+{/* <input type="file" id="input" multiple></input> */}
+// to cause images folder to pop up for form submission 
