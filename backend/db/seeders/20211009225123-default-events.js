@@ -99,6 +99,23 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: "Pickup GAA Hurling",
+          description:
+            "The New York County Board of the Gaelic Athletic Association, or New York GAA, is one of the county boards of the Gaelic Athletic Association outside Ireland, and is responsible for Gaelic games in the New York metropolitan area. The county board is also responsible for the New York inter-county teams.",
+          image:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1634054695/Pickup/71Fitz3_mcskt1.png",
+          // time: setTime(faker.date.between("2021-10-23", "2021-11-23")),
+          // date: faker.date.between("2021-10-23", "2021-11-23"),
+          date: "Thu, November 18, 2021, 08:00 PM",
+          attending: false,
+          eventAttendees: 15,
+          locationId: 12,
+          ownerId: 5,
+          typeId: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

@@ -76,8 +76,7 @@ function CreateEventForm({ setShowEventModal }) {
           <div className="fieldDiv">
             <label>Image</label>
             <input
-            className="image-upload"
-              type="file"
+              type="text"
               value={image}
               onChange={(e) => setImage(e.target.value)}
               required

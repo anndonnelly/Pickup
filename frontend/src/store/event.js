@@ -3,7 +3,8 @@ const LOAD = "event/LOAD";
 const ADD_ONE = "event/ADD_ONE"
 const LOAD_LOCATIONS = "event/LOAD_LOCATIONS";
 const LOAD_TYPES = "events/LOAD_TYPES";
-// const GET_ONE = "events/GET_ONE";
+const UPDATE_EVENT = "events/UPDATE_EVENT";
+// const DELETE_EVENT = "items/REMOVE_ITEM";
 
 const load = list => ({
     type: LOAD,
@@ -26,6 +27,16 @@ const loadTypes = (types) => ({
   types,
 });
 
+const update = (event) => ({
+  type: UPDATE_EVENT,
+  event,
+});
+
+// const remove = (itemId, pokemonId) => ({
+//   type: REMOVE_ITEM,
+//   itemId,
+//   pokemonId,
+// });
 
 export const getEvents = () => async dispatch => {
     const res = await csrfFetch("/api/events");
@@ -85,6 +96,23 @@ export const getOneEvent = (id) => async (dispatch) => {
   }
 }
 
+
+export const updateEvent = (data) => async (dispatch) => {
+  const response = await fetch(`/api/events/${data.id}`, {
+    method: "put",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (response.ok) {
+    const event = await response.json();
+    dispatch(update(event));
+    return event;
+  }
+};
+
 const initialState = {
     list: [],
     locations: [],
@@ -101,14 +129,15 @@ export const eventReducer = (state = initialState, action) => {
       });
       return { ...state, list: allEvents };
     }
-    case ADD_ONE: {
-      const newList = {...state.list}
-        newList[action.event.id] = action.event
+    case ADD_ONE:
+    case UPDATE_EVENT: {
+      const newList = { ...state.list };
+      newList[action.event.id] = action.event;
       const newState = {
-          ...state,
-          list: newList,
-        }
-        return newState;
+        ...state,
+        list: newList,
+      };
+      return newState;
     }
     case LOAD_LOCATIONS: {
       return {

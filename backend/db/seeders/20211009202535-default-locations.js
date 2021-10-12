@@ -18,7 +18,9 @@ const fakeLocationsNames = [
   "The Williamsburg Bridge",
   "Washington Square Park",
   "Tompkins Square Park",
-  "Prospect Park"
+  "Prospect Park",
+  "Gaelic Park",
+  "Not Listed"
 ];
 let locationNum = getRandomNum(1, fakeLocationsNames.length);
 return fakeLocationsNames[locationNum];

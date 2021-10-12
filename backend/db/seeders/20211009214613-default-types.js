@@ -66,6 +66,9 @@ module.exports = {
         {
           name: "New York Marathon Training",
         },
+        {
+          name: "Hurling",
+        },
       ],
       {}
     );

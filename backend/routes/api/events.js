@@ -53,6 +53,25 @@ router.post(
   })
 );
 
+
+router.put(
+  "/:id",
+  validateEvent,
+  asyncHandler(async function (req, res) {
+    const event = await EventRepository.updateEvent(req.body);
+    return res.json(event);
+  })
+);
+
+router.delete(
+  "/:id",
+  asyncHandler(async function (req, res) {
+    const eventId = await EventRepository.deleteEvent(req.params.id);
+    return res.json({ eventId });
+  })
+);
+
+
 module.exports = router;
 
 //TODO set up on frontend that user needs to put in date in YYYY/MM/DD format
