@@ -4,7 +4,7 @@ const ADD_ONE = "event/ADD_ONE"
 const LOAD_LOCATIONS = "event/LOAD_LOCATIONS";
 const LOAD_TYPES = "events/LOAD_TYPES";
 const UPDATE_EVENT = "events/UPDATE_EVENT";
-const DELETE_EVENT = "items/REMOVE_ITEM";
+const DELETE_EVENT = "events/REMOVE_ITEM";
 
 const load = list => ({
     type: LOAD,
