@@ -6,10 +6,6 @@ import { EventCard } from "./EventCard";
 const EventPage = () => {
   const dispatch = useDispatch();
 
-  // const events = useSelector((state) => {
-  //   return state.event.list;
-  // });
-  // console.log(eventImages);
   const events = useSelector((state) => {
     return Object.values(state.event.list);
   });

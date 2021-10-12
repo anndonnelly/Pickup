@@ -109,6 +109,7 @@ export const updateEvent = (data) => async (dispatch) => {
   if (response.ok) {
     const event = await response.json();
     dispatch(update(event));
+    console.log( ">>>>>>>>>>>", event)
     return event;
   }
 };

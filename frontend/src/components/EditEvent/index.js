@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateEvent, getTypes } from "../store/pokemon";
+import { updateEvent, getTypes } from "../../store/event";
+
 
 const EditEventForm = ({ event, hideForm }) => {
  const eventTypes = useSelector((state) => state.event.types);
