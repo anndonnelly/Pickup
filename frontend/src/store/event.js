@@ -98,7 +98,7 @@ export const getOneEvent = (id) => async (dispatch) => {
 
 
 export const updateEvent = (data) => async (dispatch) => {
-  const response = await fetch(`/api/events/${data.id}`, {
+  const response = await csrfFetch(`/api/events/${data.id}`, {
     method: "put",
     headers: {
       "Content-Type": "application/json",

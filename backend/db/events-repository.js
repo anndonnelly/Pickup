@@ -1,21 +1,29 @@
 const { Event } = require("./models");
 const { Location} = require ("./models");
-const { Type} = equire ("./models");
+const { Type} = require ("./models");
 
 const listEvents = async () => {
   return await Event.findAll({
-    include: Location,
-    include: Type,
-  });
-};
+    include: [{
+      model: Location,
+    },
+  {
+    model: Type
+  }]
+});
+}
 
 const listEvent = async (id) => {
   return await Event.findByPk(id, {
-    include: Location ,
-    include: Type ,
-  });
-};
-// TODO:^
+    include: [{
+      model: Location,
+    },
+  {
+    model: Type
+  }]
+});
+}
+
 const createEvent = async (details) => {
   const addEvent = await Event.create(details)
   return addEvent;

@@ -3,19 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateEvent, getTypes } from "../../store/event";
 
 
-const EditEventForm = ({ event, hideForm }) => {
- const eventTypes = useSelector((state) => state.event.types);
- const eventLocations = useSelector((state) => state.event.locations);
- const dispatch = useDispatch();
+const EditEventForm = ({ event, setIsEditing }) => {
+  const eventTypes = useSelector((state) => state.event.types);
+  const eventLocations = useSelector((state) => state.event.locations);
+  const dispatch = useDispatch();
 
-  const [name, setName] = useState(event.name);
-  const [description, setDescription] = useState(event.description);
-  const [image, setImage] = useState(event.image);
-  const [date, setDate] = useState(event.date);
-  const [eventAttendees, setEventAttendees] = useState(event.eventAttendees);
-  const [typeId, setTypeId] = useState(event.typeId);
-  const [locationId, setLocationId] = useState(event.locationId);
-  const [address, setAddress] = useState(event.address);
+  const [name, setName] = useState(event?.name);
+  const [description, setDescription] = useState(event?.description);
+  const [image, setImage] = useState(event?.image);
+  const [date, setDate] = useState(event?.date);
+  const [eventAttendees, setEventAttendees] = useState(event?.eventAttendees);
+  const [typeId, setTypeId] = useState(event?.typeId);
+  const [locationId, setLocationId] = useState(event?.locationId);
+  const [address, setAddress] = useState(event?.address);
 
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
@@ -47,13 +47,13 @@ const EditEventForm = ({ event, hideForm }) => {
 
     const updatedEvent = await dispatch(updateEvent(payload));
     if (updatedEvent) {
-      hideForm();
+      setIsEditing(false);
     }
   };
 
   const handleCancelClick = (e) => {
     e.preventDefault();
-    hideForm();
+    setIsEditing(false);
   };
 
   return (
