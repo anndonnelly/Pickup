@@ -1,6 +1,7 @@
 const { Event } = require("./models");
 const { Location} = require ("./models");
-const { Type} = require ("./models");
+const { Type } = require ("./models");
+
 
 const listEvents = async () => {
   return await Event.findAll({
@@ -29,7 +30,6 @@ const createEvent = async (details) => {
   return addEvent;
 };
 
-
 async function updateEvent(details) {
   const id = details.id;
   delete details.id;
@@ -49,7 +49,6 @@ async function deleteEvent(eventId) {
   await Event.destroy({ where: { id: event.id } });
   return event.id;
 }
-
 
 
 module.exports = {

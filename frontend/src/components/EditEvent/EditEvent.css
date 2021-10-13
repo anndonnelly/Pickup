@@ -1,0 +1,13 @@
+.edit-form-holder {
+  width: 400px;
+  margin: 10px 50px;
+  border-radius: 4px;
+}
+
+.editButtonDiv {
+  display: flex;
+}
+
+.editButtonDiv button {
+  margin-left: 10px;
+}

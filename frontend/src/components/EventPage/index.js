@@ -32,7 +32,7 @@ const EventPage = () => {
           <CreateEventModal />
           <CreateEventModal />
         </div>
-
+        <p>Events</p>
         {events?.map((event) => (
           <div>
             <EventCard {...event} />

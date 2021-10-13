@@ -1,0 +1,62 @@
+.signupField {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.signupField label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.signupField input {
+  height: 38px;
+  border-radius: 10px;
+  width: 340px;
+  border: 1px solid lightgray;
+}
+
+.signupField button {
+  width: 345px;
+  height: 50px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #f65858;
+  border-color: #f65858;
+  padding: 8px 12px;
+  font-size: 20px;
+}
+
+.signupDiv {
+  height: 80vh;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+}
+.signupLeftDiv {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  padding-left: 10%;
+  padding-right: 10%;
+  width: 30%;
+}
+
+.signupRightDiv {
+  width: 50%;
+  background: url("https://res.cloudinary.com/dis83syog/image/upload/v1634127347/Pickup/image0_ypkajn.jpg")
+    50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.AlreadyAMember {
+    text-decoration: none;
+
+}
+
+.AlreadyAMemberContainer{
+    padding-left: 62px;
+}

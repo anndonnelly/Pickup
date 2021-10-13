@@ -6,6 +6,7 @@ const { User } = require("../../db/models");
 const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
+const UserRepository = require("../../db/users-repository");
 
 const validateSignup = [
   check("email")
@@ -39,6 +40,17 @@ router.post(
     });
   }),
 );
+
+
+router.get(
+  "/:id",
+  validateSignup,
+  asyncHandler(async (_req, res) => {
+    let {id} = req.params
+    const events = await UserRepository.listMyEvents(IDBDatabase);
+    return res.json({events});
+  }));
+
 
 module.exports = router;
 

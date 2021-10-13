@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateEvent, getTypes, getLocations } from "../../store/event";
-
+import "./EditEvent.css";
 const EditEventForm = ({ event, setIsEditing }) => {
   const eventTypes = useSelector((state) => state.event.types);
   const eventLocations = useSelector((state) => state.event.locations);
@@ -25,10 +25,18 @@ const EditEventForm = ({ event, setIsEditing }) => {
   const updateLocationId = (e) => setLocationId(e.target.value);
   const updateAddress = (e) => setAddress(e.target.value);
 
-  useEffect(() => {
-    dispatch(getTypes());
-    dispatch(getLocations())
-  }, [dispatch]);
+
+  // const [showEditModal, setEditEventModal] = useState(false);
+  // const sessionUser = useSelector((state) => state.session.user);
+  //   useEffect(() => {
+  //     if (showEditModal) document.body.style.overflow = "hidden";
+  //     else document.body.style.overflow = "auto";
+  //   }, [setEditEventModal]);
+
+  // useEffect(() => {
+  //   dispatch(getTypes());
+  //   dispatch(getLocations());
+  // }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,6 +66,9 @@ const EditEventForm = ({ event, setIsEditing }) => {
 
   return (
     <section className="edit-form-holder centered middled">
+      <div className="modalHeader">
+        <p>Edit an event</p>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="fieldDiv">
           <label>Event Name</label>
@@ -116,7 +127,7 @@ const EditEventForm = ({ event, setIsEditing }) => {
             ))}
           </select>
         </div>
-        <div className="createEventButton">
+        <div className="createEventButton editButtonDiv">
           <button type="submit">Create New Event</button>
           <button type="button" onClick={handleCancelClick}>
             Cancel

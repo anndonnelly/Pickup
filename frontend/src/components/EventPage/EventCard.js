@@ -33,7 +33,10 @@ export const EventCard = ({ id, image, date, name, description}) => {
 
     return (
       <div className="cardDiv">
-        <Link  to={`/events/${id}`}> <img className="event-image" src={image} alt="event" /></Link>
+        <Link to={`/events/${id}`}>
+          {" "}
+          <img className="event-image" src={image} alt="event" />
+        </Link>
         <div className="cardDivContent">
           <p>
             {new Date(date).toLocaleDateString("en-US", {
@@ -49,7 +52,8 @@ export const EventCard = ({ id, image, date, name, description}) => {
           <p className="font-bold">{name}</p>
           <p>{type?.name}</p>
           <p>{description}</p>
-          {/* <p>{location}</p> */}
+          {/* <label>Attending: </label> */}
+          {/* <input type="checkbox" value={} onChange={} /> */}
         </div>
         <div className="editCard">
           <button value={isEditing} onClick={() => setIsEditing(true)}>
@@ -64,10 +68,9 @@ export const EventCard = ({ id, image, date, name, description}) => {
               />
             </Modal>
           )}
-          <button
-            value={id}
-            onClick={() => dispatch(deleteEvent(id))}
-          >Delete</button>
+          <button value={id} onClick={() => dispatch(deleteEvent(id))}>
+            Delete
+          </button>
         </div>
       </div>
     );

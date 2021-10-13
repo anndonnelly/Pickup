@@ -7,7 +7,6 @@
 //   return time;
 // }
 
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert(
@@ -130,6 +129,22 @@ module.exports = {
           locationId: 2,
           ownerId: 4,
           typeId: 20,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Brad's Basketball Bonanza",
+          description: "Guaranteed to be an outstanding event",
+          image:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1634093811/Pickup/sunset-g756367851_1920_rykjwt.jpg",
+          // time: setTime(faker.date.between("2021-10-23", "2021-11-23")),
+          // date: faker.date.between("2021-10-23", "2021-11-23"),
+          date: "Sun, October 24, 2021, 08:00 AM",
+          attending: false,
+          eventAttendees: 15,
+          locationId: 3,
+          ownerId: 3,
+          typeId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

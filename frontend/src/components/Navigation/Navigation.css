@@ -39,6 +39,8 @@
 
 .profile-dropdown {
   z-index: 7;
+  list-style-type: circle;
+  padding-right: 5px;
 }
 
 .home-container {
@@ -96,3 +98,15 @@
   border-color: #f65858;
   padding: 8px 12px;
 } */
+
+.logoutButton {
+  width: 90px;
+  height: 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #f65858;
+  border-color: #f65858;
+  padding: 2px 6px;
+  font-size: 13px;
+}
