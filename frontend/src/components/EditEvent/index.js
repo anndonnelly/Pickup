@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateEvent, getTypes } from "../../store/event";
+import { updateEvent, getTypes, getLocations } from "../../store/event";
 
 const EditEventForm = ({ event, setIsEditing }) => {
   const eventTypes = useSelector((state) => state.event.types);
@@ -27,6 +27,7 @@ const EditEventForm = ({ event, setIsEditing }) => {
 
   useEffect(() => {
     dispatch(getTypes());
+    dispatch(getLocations())
   }, [dispatch]);
 
   const handleSubmit = async (e) => {
