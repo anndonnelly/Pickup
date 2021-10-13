@@ -3,12 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getEvents } from "../../store/event";
 import CreateEventModal from "../CreateEventModal";
 import { EventCard } from "./EventCard";
+
+
 const EventPage = () => {
   const dispatch = useDispatch();
 
   const events = useSelector((state) => {
     return Object.values(state.event.list);
   });
+
+  // console.log("xhbjsbxjsbxjs",events)
+
+
+
 
   useEffect(() => {
     dispatch(getEvents());
@@ -27,7 +34,9 @@ const EventPage = () => {
         </div>
 
         {events?.map((event) => (
-          <EventCard {...event} />
+          <div>
+            <EventCard {...event} />
+          </div>
         ))}
       </div>
     </main>

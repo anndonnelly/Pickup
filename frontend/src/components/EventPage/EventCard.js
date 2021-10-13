@@ -6,6 +6,7 @@ import { Modal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
 import { deleteEvent } from "../../store/event";
 import { getTypes } from "../../store/event";
+import { Link } from "react-router-dom";
 
 export const EventCard = ({ id, image, date, name, description}) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -32,7 +33,7 @@ export const EventCard = ({ id, image, date, name, description}) => {
 
     return (
       <div className="cardDiv">
-        <img className="event-image" src={image} alt="event" />
+        <Link  to={`/events/${id}`}> <img className="event-image" src={image} alt="event" /></Link>
         <div className="cardDivContent">
           <p>
             {new Date(date).toLocaleDateString("en-US", {
