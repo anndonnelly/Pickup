@@ -48,6 +48,7 @@ module.exports = (sequelize, DataTypes) => {
       through: "RSVPs",
       otherKey: "userId",
       foreignKey: "eventId",
+      as: "reservations",
     };
     Event.belongsToMany(models.User, columnMapping);
     Event.belongsTo(models.Location, { foreignKey: "locationId" });

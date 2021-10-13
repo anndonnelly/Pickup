@@ -43,14 +43,22 @@ router.post(
 
 
 router.get(
-  "/:id",
-  validateSignup,
+  "/:id/hosting",
   asyncHandler(async (_req, res) => {
-    let {id} = req.params
-    const events = await UserRepository.listMyEvents(IDBDatabase);
-    return res.json({events});
+    let {id} = _req.params
+    const events = await UserRepository.listMyHostingEvents(id);
+    return res.json(events);
   }));
 
+
+router.get(
+  "/:id/attending",
+  asyncHandler(async (_req, res) => {
+    let { id } = _req.params;
+    const events = await UserRepository.listMyAttendingEvents(id);
+    return res.json(events);
+  })
+);
 
 module.exports = router;
 

@@ -8,6 +8,8 @@ import { Footer } from "./components/Navigation/Footer";
 import { SplashPage } from "./components/SplashPage/SplashPage";
 import EventPage from "./components/EventPage";
 import OneEvent from "./components/SingleEvent";
+import AttendingEvent from "./components/Attending";
+import HostingEvent from "./components/Hosting";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +34,12 @@ function App() {
           </Route>
           <Route path="/events/:eventId">
             <OneEvent />
+          </Route>
+          <Route path="/users/:userId/attending">
+            <AttendingEvent />
+          </Route>
+          <Route path="/users/:userId/hosting">
+            <HostingEvent />
           </Route>
         </Switch>
       )}

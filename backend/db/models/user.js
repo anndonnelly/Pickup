@@ -58,6 +58,7 @@ module.exports = (sequelize, DataTypes) => {
        through: "RSVPs",
        otherKey: "eventId",
        foreignKey: "userId",
+       as: "reservations"
      };
     User.belongsToMany(models.Event, columnMapping);
     User.hasMany(models.Event, { foreignKey: "ownerId" });

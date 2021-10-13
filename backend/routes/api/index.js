@@ -10,7 +10,6 @@ router.use("/users", usersRouter);
 router.use("/events", eventsRouter);
 router.use("/locations", locationRouter);
 router.use("/types", typeRouter);
-// router.use("/events/:id", eventsRouter);
 
 module.exports = router;
 
