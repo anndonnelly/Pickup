@@ -15,6 +15,7 @@ const EditEventForm = ({ event, setIsEditing }) => {
   const [typeId, setTypeId] = useState(event?.typeId);
   const [locationId, setLocationId] = useState(event?.locationId);
   const [address, setAddress] = useState(event?.address);
+  const [cityAndZip, setCityAndZip] = useState(event?.cityAndZip);
 
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
@@ -24,19 +25,7 @@ const EditEventForm = ({ event, setIsEditing }) => {
   const updateTypeId = (e) => setTypeId(e.target.value);
   const updateLocationId = (e) => setLocationId(e.target.value);
   const updateAddress = (e) => setAddress(e.target.value);
-
-
-  // const [showEditModal, setEditEventModal] = useState(false);
-  // const sessionUser = useSelector((state) => state.session.user);
-  //   useEffect(() => {
-  //     if (showEditModal) document.body.style.overflow = "hidden";
-  //     else document.body.style.overflow = "auto";
-  //   }, [setEditEventModal]);
-
-  // useEffect(() => {
-  //   dispatch(getTypes());
-  //   dispatch(getLocations());
-  // }, [dispatch]);
+  const updateCityAndZip = (e) => setCityAndZip(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,6 +40,7 @@ const EditEventForm = ({ event, setIsEditing }) => {
       typeId,
       locationId,
       address,
+      cityAndZip,
     };
 
     const updatedEvent = await dispatch(updateEvent(payload));
@@ -106,8 +96,8 @@ const EditEventForm = ({ event, setIsEditing }) => {
           />
         </div>
         <div className="fieldDiv">
-          <label>Locations</label>
-          <select value={locationId} onChange={updateLocationId}>
+          <label>Address 1</label>
+          <select value={locationId} required onChange={updateLocationId}>
             {eventLocations.map((location) => (
               <option value={location.id} key={location.id}>
                 {location.name}
@@ -116,6 +106,13 @@ const EditEventForm = ({ event, setIsEditing }) => {
           </select>
           <label>Address 2</label>
           <input type="text" value={address} onChange={updateAddress} />
+          <label>City, ZIP Code</label>
+          <input
+            type="text"
+            value={cityAndZip}
+            onChange={updateCityAndZip}
+            required
+          />
         </div>
         <div className="fieldDiv">
           <label>Types</label>
@@ -139,3 +136,17 @@ const EditEventForm = ({ event, setIsEditing }) => {
 };
 
 export default EditEventForm;
+
+
+//  <div className="fieldDiv">
+//    <label>Locations</label>
+//    <select value={locationId} onChange={updateLocationId}>
+//      {eventLocations.map((location) => (
+//        <option value={location.id} key={location.id}>
+//          {location.name}
+//        </option>
+//      ))}
+//    </select>
+//    <label>Address 2</label>
+//    <input type="text" value={address} onChange={updateAddress} />
+//  </div>;

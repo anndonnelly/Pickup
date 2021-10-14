@@ -83,7 +83,7 @@ function SignupFormPage() {
           <div>
             <p className="AlreadyAMemberContainer">
               Already a member?
-              <Link className="AlreadyAMember"> Log in</Link>.
+              <Link to="/" className="AlreadyAMember"> Log in</Link>.
             </p>
           </div>
         </form>
@@ -93,3 +93,6 @@ function SignupFormPage() {
   );
 }
 export default SignupFormPage;
+
+
+//TODO get modal to pop up on AlreadyAMember link

@@ -10,10 +10,15 @@ import EventPage from "./components/EventPage";
 import OneEvent from "./components/SingleEvent";
 import AttendingEvent from "./components/Attending";
 import HostingEvent from "./components/Hosting";
+import MyEvents from "./components/MyEvents";
+
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isAttending, setAttending] = useState(true);
+  const [isHosting, setHosting] = useState(false);
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -35,12 +40,17 @@ function App() {
           <Route path="/events/:eventId">
             <OneEvent />
           </Route>
-          <Route path="/users/:userId/attending">
-            <AttendingEvent />
+            <MyEvents isAttending={isAttending} />
+            {isAttending && (
+          <Route path="/users/:userId">
+              <Route path="/users/:userId/attending">
+                <AttendingEvent />
+              </Route>
+              <Route path="/users/:userId/hosting">
+                <HostingEvent />
+              </Route>
           </Route>
-          <Route path="/users/:userId/hosting">
-            <HostingEvent />
-          </Route>
+            )}
         </Switch>
       )}
       <Footer />

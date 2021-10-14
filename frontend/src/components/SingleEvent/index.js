@@ -17,7 +17,7 @@ const OneEvent = () => {
   });
 
   const userId = useSelector(state => state.session?.user?.id)
-  console.log("kkkkkkkk",userId);
+
   //  const location = useSelector((state) => {
   //    return state.event.list[locationId];
   //  });

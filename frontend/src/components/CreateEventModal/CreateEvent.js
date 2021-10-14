@@ -20,6 +20,7 @@ function CreateEventForm({ setShowEventModal }) {
   const [typeId, setTypeId] = useState(1);
   const [locationId, setLocationId] = useState(1);
   const [address, setAddress] = useState("");
+  const [cityAndZip, setCityAndZip] = useState("")
   
 
   useEffect(() => {
@@ -36,6 +37,8 @@ function CreateEventForm({ setShowEventModal }) {
       date,
       eventAttendees,
       locationId,
+      address,
+      cityAndZip,
       ownerId,
       typeId,
     };
@@ -101,9 +104,10 @@ function CreateEventForm({ setShowEventModal }) {
             />
           </div>
           <div className="fieldDiv">
-            <label>Locations</label>
+            <label>Address 1</label>
             <select
               value={locationId}
+              required
               onChange={(e) => setLocationId(e.target.value)}
             >
               {eventLocations.map((location) => (
@@ -117,6 +121,13 @@ function CreateEventForm({ setShowEventModal }) {
               type="text"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
+            />
+            <label>City, ZIP Code</label>
+            <input
+              type="text"
+              value={cityAndZip}
+              onChange={(e) => setCityAndZip(e.target.value)}
+              required
             />
           </div>
           <div className="fieldDiv">
