@@ -6,6 +6,10 @@ module.exports = {
       "RSVPs",
       [
         {
+          eventId: 1,
+          userId: 1,
+        },
+        {
           eventId: 2,
           userId: 1,
         },
@@ -15,6 +19,14 @@ module.exports = {
         },
         {
           eventId: 4,
+          userId: 1,
+        },
+        {
+          eventId: 5,
+          userId: 1,
+        },
+        {
+          eventId: 6,
           userId: 1,
         },
       ],

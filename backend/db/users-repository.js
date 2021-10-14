@@ -14,10 +14,6 @@ const listMyAttendingEvents = async (id) => {
   });
 };
 
-
-
-;
-
 module.exports = {
   listMyHostingEvents,
   listMyAttendingEvents,
