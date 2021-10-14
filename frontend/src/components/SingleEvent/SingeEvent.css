@@ -26,3 +26,17 @@
   flex-direction: column;
   padding: 10px;
 }
+
+/* // THURSDAY ADDITION */
+.attendButton button {
+  padding-left: 10px;
+  font-weight: bold;
+  color: rgba(0, 130, 148, var(--tw-text-opacity));
+  margin-left: 10px;
+  border-style: none;
+  background-color: transparent;
+}
+
+.attendButton button:hover {
+  color: rgba(0, 130, 148, 1);
+}

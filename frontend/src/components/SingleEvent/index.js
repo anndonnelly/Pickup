@@ -6,6 +6,7 @@ import { getLocations } from "../../store/event";
 import { EventCard } from "../EventPage/EventCard";
 import { createAttendingEvent } from "../../store/event";
 import { useHistory } from "react-router";
+import "./SingeEvent.css";
 
 const OneEvent = () => {
   const { eventId } = useParams();
@@ -46,7 +47,9 @@ const OneEvent = () => {
       <div className="mainCard">
         <EventCard {...event} isEditEnable />
       </div>
-      <button onClick={handleSubmit}>Attend</button>
+      <button className="attendButton"onClick={handleSubmit}>
+        Attend
+      </button>
     </>
   );
 };
