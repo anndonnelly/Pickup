@@ -50,7 +50,7 @@ function CreateEventForm({ setShowEventModal }) {
       setShowEventModal(false);
     }
   };
-  // console.log(typeId)
+
   return (
     <div className="createEventModal">
       <div className="modalHeader">

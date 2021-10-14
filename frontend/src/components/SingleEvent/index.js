@@ -37,7 +37,6 @@ const OneEvent = () => {
     }
     let createdRSVP = await dispatch(createAttendingEvent(payload, eventId))
     if (createdRSVP){
-      console.log("some bulshit")
       history.push(`/users/${userId}/attending`)
     }
   }

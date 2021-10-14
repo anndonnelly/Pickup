@@ -16,6 +16,7 @@ function HostingEvent() {
   useEffect(() => {
     dispatch(getMyHostedEvents(userId)).then(() => setLoading(true));
   }, [dispatch]);
+  // if (loading){
     return (
       <>
         <MyEvents />
@@ -26,6 +27,9 @@ function HostingEvent() {
           </div>
       </>
     );
+  // } else {
+  //   return null;
+  // }
 }
 
 export default HostingEvent;

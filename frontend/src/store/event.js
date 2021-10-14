@@ -89,7 +89,7 @@ export const createEvent = (payload) => async (dispatch) => {
 
 export const getLocations = () => async (dispatch) => {
   const res = await csrfFetch("/api/locations");
-  console.log(res);
+
 
   if (res.ok) {
     const locations = await res.json();
