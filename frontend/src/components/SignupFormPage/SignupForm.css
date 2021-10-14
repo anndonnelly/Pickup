@@ -46,10 +46,16 @@
 
 .signupRightDiv {
   width: 50%;
-  background: url("https://res.cloudinary.com/dis83syog/image/upload/v1634127347/Pickup/image0_ypkajn.jpg")
-    50% 50%;
+  background: url(https://res.cloudinary.com/dis83syog/image/upload/v1634127347/Pickup/image0_ypkajn.jpg);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: fill;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-size: cover;
+
+
 }
 
 .AlreadyAMember {

@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { EventCard } from "../EventPage/EventCard";
 import { useParams } from "react-router";
@@ -9,19 +9,24 @@ function HostingEvent() {
     const dispatch = useDispatch();
     const { userId } = useParams();
 
-  const events = useSelector(state => state?.event?.hosting?.Events)
-  console.log("************", events)
+  const events = useSelector(state => state.event.hosting.Events)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(getMyHostedEvents(userId));
+    dispatch(getMyHostedEvents(userId)).then(() => setLoading(true));
   }, [dispatch]);
-
-  return ( 
-    <div>  {events.map((event) =>
-        <EventCard {...event} key={event.id}/>)}
-    </div>
-)}
-
+  if (loading){
+    return (
+      <div>
+        {events?.map((event) => (
+          <EventCard key={event.id} {...event} />
+        ))}
+      </div>
+    );
+  } else {
+    return null;
+  }
+  }
 
 export default HostingEvent;
 
