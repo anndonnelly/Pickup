@@ -9,7 +9,7 @@ import { getTypes } from "../../store/event";
 import { Link } from "react-router-dom";
 
 export const EventCard = ({ id, image, date, name, description}) => {
-  // console.log("PROP", id, image, date, name, description);
+ 
     const [isEditing, setIsEditing] = useState(false);
     const events = useSelector((state) => state.event);
     const dispatch = useDispatch()
@@ -77,7 +77,6 @@ export const EventCard = ({ id, image, date, name, description}) => {
     );
 }
 
-    
 
 
 

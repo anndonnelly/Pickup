@@ -7,6 +7,7 @@ const UPDATE_EVENT = "events/UPDATE_EVENT";
 const DELETE_EVENT = "events/REMOVE_ITEM";
 const LOAD_ATTENDING = "events/LOAD_ATTENDING";
 const LOAD_HOSTING = "events/LOAD_HOSTING";
+const ADD_RSVP = "events/ADD_RSVP";
 
 const load = (list) => ({
   type: LOAD,
@@ -47,6 +48,11 @@ const loadAttending = (events) => ({
 const loadHosting = (events) => ({
   type: LOAD_HOSTING,
   events,
+});
+
+const addRSVP = (event) => ({
+  type: ADD_RSVP,
+  event,
 });
 
 export const getEvents = () => async (dispatch) => {
@@ -134,9 +140,8 @@ export const deleteEvent = (eventId) => async (dispatch) => {
 };
 
 export const getMyAttendingEvents = (id) => async (dispatch) => {
-  console.log("hitting fetch");
   const res = await csrfFetch(`/api/users/${id}/attending`);
-
+  
   if (res.ok) {
     const events = await res.json();
     dispatch(loadAttending(events.reservations));
@@ -150,6 +155,21 @@ export const getMyHostedEvents = (id) => async (dispatch) => {
     dispatch(loadHosting(events));
   }
 };
+
+export const createAttendingEvent = (payload, id) => async (dispatch) => {
+  const res = await csrfFetch(`/api/users/${id}/attending`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+  if (res.ok){
+    const createRSVP = res.json()
+    dispatch(addRSVP(createRSVP));
+    return createRSVP;
+  }
+}
 
 const initialState = {
   list: [],
@@ -206,6 +226,11 @@ export const eventReducer = (state = initialState, action) => {
       const newList = { ...newState.list };
       delete newList[action.eventId];
       newState.list = newList;
+      return newState;
+    }
+    case ADD_RSVP : {
+      const newState = { ...state };
+      newState.attending[action.event.id] = action.events;
       return newState;
     }
     default:

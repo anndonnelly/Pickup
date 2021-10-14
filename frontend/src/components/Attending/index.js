@@ -11,7 +11,6 @@ function AttendingEvent() {
   const { userId } = useParams();
 
   const events = useSelector(state => state.event.attending)
-  console.log("ARRAY", events)
   //keying into slice of state
 
   useEffect(() => {
