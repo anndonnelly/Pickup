@@ -46,7 +46,7 @@ async function deleteEvent(eventId) {
   const event = await Event.findByPk(eventId);
   if (!event) throw new Error("Cannot find event");
 
-  await Event.destroy({ where: { id: event.id } });
+  await event.destroy();
   return event.id;
 }
 

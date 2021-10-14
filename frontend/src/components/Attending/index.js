@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMyAttendingEvents } from "../../store/event";
 import { useParams } from "react-router";
 import { EventCard } from "../EventPage/EventCard";
+import MyEvents from "../MyEvents";
 
 
 function AttendingEvent() {
@@ -18,9 +19,12 @@ function AttendingEvent() {
   }, [dispatch]);
 
   return ( 
-    <div>  {events.map((event) =>
-        <EventCard {...event} key={event.id}/>)}
-    </div>
+    <>
+      <MyEvents/>
+        <div>  {events.map((event) =>
+            <EventCard {...event} key={event.id}/>)}
+        </div>
+    </>
 )}
     
 export default AttendingEvent;

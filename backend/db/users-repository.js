@@ -18,8 +18,15 @@ const createRSVP = async (details) => {
   return await RSVP.create(details)
 }
 
+const deleteRSVP = async(detials) => {
+  const rsvp = await RSVP.findByPk(detials);
+  if (!rsvp) throw new Error("RSVP does not exist")
+  return await rsvp.destroy();
+}
+
 module.exports = {
   listMyHostingEvents,
   listMyAttendingEvents,
   createRSVP,
+  deleteRSVP,
 };

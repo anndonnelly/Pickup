@@ -1,31 +1,28 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
-// import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { getMyAttendingEvents, getMyHostedEvents } from "../../store/event";
+import { NavLink, useHistory } from "react-router-dom";
+import { useSelector, useDispatch} from "react-redux";
+import { useEffect } from "react";
+import { getMyAttendingEvents, getMyHostedEvents } from "../../store/event";
+
 // import { useParams } from "react-router";
-// import { EventCard } from "../EventPage/EventCard";
+
 
 function MyEvents() {
   const history = useHistory();
-  const userId = useSelector(state => state.session?.user.id)
+  const userId = useSelector(state => state.session?.user.id);
+  const dispatch = useDispatch();
 
-  const attending = (e) => {
-    e.preventDefault();
-    history.push(`/users/${userId}/attending`)
-  }
-  
-  const hosting = (e) => {
-    e.preventDefault();
-    history.push(`/users/${userId}/hosting`);
-  };
+  useEffect(() => {
+    dispatch(getMyAttendingEvents(userId));
+    dispatch(getMyHostedEvents(userId));
+  }, [dispatch]);
 
 
   return (
     <>
-      <div onClick={attending}>Attending</div>
-      <div onClick={hosting}>Hosting</div>
+      <NavLink to={`/users/${userId}/attending`}>Attending</NavLink>
+      <NavLink to={`/users/${userId}/hosting`}>Hosting</NavLink>
+
     </>
   );
 }

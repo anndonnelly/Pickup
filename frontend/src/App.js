@@ -40,17 +40,12 @@ function App() {
           <Route path="/events/:eventId">
             <OneEvent />
           </Route>
-            <MyEvents isAttending={isAttending} />
-            {isAttending && (
-          <Route path="/users/:userId">
-              <Route path="/users/:userId/attending">
-                <AttendingEvent />
-              </Route>
-              <Route path="/users/:userId/hosting">
-                <HostingEvent />
-              </Route>
+          <Route path="/users/:userId/attending">
+            <AttendingEvent />
           </Route>
-            )}
+          <Route path="/users/:userId/hosting">
+            <HostingEvent />
+          </Route>
         </Switch>
       )}
       <Footer />

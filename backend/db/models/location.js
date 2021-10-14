@@ -15,10 +15,6 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      // state: {
-      //   allowNull: false,
-      //   type: DataTypes.STRING,
-      // },
       zipCode: {
         allowNull: false,
         type: DataTypes.INTEGER,
@@ -28,7 +24,12 @@ module.exports = (sequelize, DataTypes) => {
   );
   Location.associate = function(models) {
     // associations can be defined here
-    Location.hasMany(models.Event, { foreignKey: "locationId" });
+    Location.hasMany(models.Event, {
+      foreignKey: "locationId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
   };
   return Location;
 };
+

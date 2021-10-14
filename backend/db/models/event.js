@@ -15,9 +15,6 @@ module.exports = (sequelize, DataTypes) => {
       image: {
         type: DataTypes.STRING,
       },
-      // time: {
-      //   type: DataTypes.STRING,
-      // },
       date: {
         type: DataTypes.STRING,
       },
@@ -54,6 +51,12 @@ module.exports = (sequelize, DataTypes) => {
     Event.belongsTo(models.Location, { foreignKey: "locationId" });
     Event.belongsTo(models.Type, { foreignKey: "typeId" });
     Event.belongsTo(models.User, { foreignKey: "ownerId" });
+    Event.hasMany(models.RSVP, {
+      foreignKey: "eventId",
+      as: "rsvps",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
   };
   return Event;
 };

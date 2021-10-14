@@ -8,6 +8,7 @@ const DELETE_EVENT = "events/REMOVE_ITEM";
 const LOAD_ATTENDING = "events/LOAD_ATTENDING";
 const LOAD_HOSTING = "events/LOAD_HOSTING";
 const ADD_RSVP = "events/ADD_RSVP";
+const DELETE_RSVP = "events/ADD_RSVP";
 
 const load = (list) => ({
   type: LOAD,
@@ -54,6 +55,12 @@ const addRSVP = (event) => ({
   type: ADD_RSVP,
   event,
 });
+
+const deleteRSVP = (rsvp) => ({
+  type: DELETE_RSVP,
+  rsvp
+});
+
 
 export const getEvents = () => async (dispatch) => {
   const res = await csrfFetch("/api/events");
@@ -171,6 +178,18 @@ export const createAttendingEvent = (payload, id) => async (dispatch) => {
   }
 }
 
+export const deleteAttendingEvent = (userId, rsvpId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/users/${userId}/attending/${rsvpId}`, {
+    method: "delete",
+  });
+
+  if (response.ok) {
+    const { rsvpId } = await response.json();
+    dispatch(deleteRSVP(rsvpId));
+  }
+};
+
+
 const initialState = {
   list: [],
   locations: [],
@@ -228,9 +247,16 @@ export const eventReducer = (state = initialState, action) => {
       newState.list = newList;
       return newState;
     }
-    case ADD_RSVP : {
+    case ADD_RSVP: {
       const newState = { ...state };
       newState.attending[action.event.id] = action.events;
+      return newState;
+    }
+    case DELETE_RSVP: {
+      const newState = { ...state };
+      const newList = { ...newState.list };
+      delete newList[action.rsvpId];
+      newState.list = newList;
       return newState;
     }
     default:

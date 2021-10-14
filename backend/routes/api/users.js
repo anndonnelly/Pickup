@@ -68,6 +68,16 @@ router.post(
   })
 );
 
+router.delete(
+  "/:id/attending/:rsvpId",
+  asyncHandler(async function (req, res) {
+    const RSVP = await UserRepository.createRSVP(req.body);
+    return res.json(RSVP);
+  })
+);
+
+
+
 module.exports = router;
 
 
