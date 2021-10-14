@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateEvent, getTypes, getLocations } from "../../store/event";
+
 import "./EditEvent.css";
 const EditEventForm = ({ event, setIsEditing }) => {
   const eventTypes = useSelector((state) => state.event.types);
   const eventLocations = useSelector((state) => state.event.locations);
   const dispatch = useDispatch();
+  const location = eventLocations.find((loc) => loc.id === event.locationId);
+ 
 
   const [name, setName] = useState(event?.name);
   const [description, setDescription] = useState(event?.description);
@@ -14,8 +17,9 @@ const EditEventForm = ({ event, setIsEditing }) => {
   const [eventAttendees, setEventAttendees] = useState(event?.eventAttendees);
   const [typeId, setTypeId] = useState(event?.typeId);
   const [locationId, setLocationId] = useState(event?.locationId);
-  const [address, setAddress] = useState(event?.address);
-  const [cityAndZip, setCityAndZip] = useState(event?.cityAndZip);
+  const [address, setAddress] = useState(location?.address || "");
+  const [cityAndZip, setCityAndZip] = useState(location?.city || "");
+ 
 
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
@@ -53,6 +57,19 @@ const EditEventForm = ({ event, setIsEditing }) => {
     e.preventDefault();
     setIsEditing(false);
   };
+
+   useEffect(() => {
+     dispatch(getLocations());
+     dispatch(getTypes());
+   }, [dispatch]);
+
+  useEffect(() => {
+    if (location) {setAddress(location.address)
+    setCityAndZip(`${location.city} ${location.zipCode}`);
+    }
+
+  }, [location]);
+
 
   return (
     <section className="edit-form-holder centered middled">

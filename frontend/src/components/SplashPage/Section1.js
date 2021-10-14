@@ -5,9 +5,9 @@ export const Section1 = () => {
         <div className="leftDiv">
           <h1>Dive in! There are so many things to do on Pickup</h1>
           <p>
-            For people who want to exercise together in public. Sign up and come along to meet people, 
-            make friends, grow and explore your interests. Thousands of events are
-            happening every day, both online and in person!
+            As New York City reopens, there’s a wide array of Pickup games waiting outside your door. An outlet for people who 
+            want to exercise together, make friends, find support and explore their interests. Thousands of events are happening every day, 
+            both online and in person!
           </p>
         </div>
         <div className="rightDiv">
@@ -23,5 +23,3 @@ export const Section1 = () => {
 };
 
 
-// 
-// It provides much needed stress relief and a way to escape from the usual routine of the workweek.

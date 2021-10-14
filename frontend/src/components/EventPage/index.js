@@ -4,6 +4,7 @@ import { getEvents } from "../../store/event";
 import CreateEventModal from "../CreateEventModal";
 import { EventCard } from "./EventCard";
 import { useHistory } from "react-router";
+import "./EventPage.css";
 
 
 const EventPage = () => {
@@ -33,10 +34,11 @@ const EventPage = () => {
       <div className="mainCard">
         <div className="eventButtons">
           <CreateEventModal />
-          <CreateEventModal />
         </div>
         <p>Events</p>
-        <button onClick={myEvents}>See all your events</button>
+        <button onClick={myEvents}>
+          My Events
+        </button>
         {events?.map((event) => (
           <div>
             <EventCard {...event} />
