@@ -13,7 +13,7 @@ function AttendingEvent() {
   const { userId } = useParams();
   const [counter, setCounter] = useState(0);
   // Dzan addition
- 
+  
   const events = useSelector(state => state.event.attending)
   //keying into slice of state
 

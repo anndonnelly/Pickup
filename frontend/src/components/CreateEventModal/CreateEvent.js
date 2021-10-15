@@ -29,13 +29,9 @@ function CreateEventForm({ setShowEventModal }) {
     dispatch(getTypes());
   }, [dispatch]);
 
-  useEffect(() => {
-    const errors = [];
-    if (!name) errors.push("Please provide a name for your event");
-    if (!description) errors.push("Please provide a description of your event");
-    if (!address) errors.push("Please provide a valid address for your event");
-    setValErrors(errors)
-  }, [name, description, address])
+  // useEffect(() => {
+    
+  // }, [name, description, address])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,6 +47,16 @@ function CreateEventForm({ setShowEventModal }) {
       ownerId,
       typeId,
     };
+    
+
+
+    const errors = [];
+    if (!name) errors.push("Please provide a name for your event");
+    if (!description) errors.push("Please provide a description of your event");
+    if (!address) errors.push("Please provide a valid address for your event");
+    setValErrors(errors);
+
+
 
     let createdEvent = await dispatch(createEvent(payload));
     // createEvent was created in event store
@@ -68,15 +74,14 @@ function CreateEventForm({ setShowEventModal }) {
       <div>
         <form onSubmit={handleSubmit}>
           <ul className="errors">
-            {valErrors.map((valError) => (
+            {(valErrors.length > 0) ? valErrors.map((valError) => (
               <li key={valError}>{valError}</li>
-            ))}
+            )) : null}
           </ul>
           <div className="fieldDiv">
             <label>Event Name</label>
             <input
               type="text"
-              required
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -87,7 +92,6 @@ function CreateEventForm({ setShowEventModal }) {
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              required
             />
           </div>
           <div className="fieldDiv">
@@ -96,7 +100,6 @@ function CreateEventForm({ setShowEventModal }) {
               type="text"
               value={image}
               onChange={(e) => setImage(e.target.value)}
-              required
             />
           </div>
           <div className="fieldDiv">
@@ -105,7 +108,6 @@ function CreateEventForm({ setShowEventModal }) {
               type="datetime-local"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              required
             />
           </div>
           <div className="fieldDiv">
@@ -114,14 +116,12 @@ function CreateEventForm({ setShowEventModal }) {
               type="number"
               value={eventAttendees}
               onChange={(e) => setEventAttendees(e.target.value)}
-              required
             />
           </div>
           <div className="fieldDiv">
             <label>Address 1</label>
             <select
               value={locationId}
-              required
               onChange={(e) => setLocationId(e.target.value)}
             >
               {eventLocations.map((location) => (
@@ -141,7 +141,6 @@ function CreateEventForm({ setShowEventModal }) {
               type="text"
               value={cityAndZip}
               onChange={(e) => setCityAndZip(e.target.value)}
-              required
             />
           </div>
           <div className="fieldDiv">

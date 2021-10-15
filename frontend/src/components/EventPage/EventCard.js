@@ -21,9 +21,9 @@ export const EventCard = ({ id, image, date, name, description}) => {
   // const typeName = event?.Type.name
 
   const locationName = event?.Location?.name;
-  const locationAddress = event?.Location.address;
-  const locationCity = event?.Location.city;
-  const locationZipCode = event?.Location.zipCode;
+  const locationAddress = event?.Location?.address;
+  const locationCity = event?.Location?.city;
+  const locationZipCode = event?.Location?.zipCode;
 
   useEffect(() => {
     dispatch(getTypes());
