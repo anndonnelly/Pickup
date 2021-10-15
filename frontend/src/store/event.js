@@ -8,7 +8,7 @@ const DELETE_EVENT = "events/REMOVE_ITEM";
 const LOAD_ATTENDING = "events/LOAD_ATTENDING";
 const LOAD_HOSTING = "events/LOAD_HOSTING";
 const ADD_RSVP = "events/ADD_RSVP";
-const DELETE_RSVP = "events/ADD_RSVP";
+const DELETE_RSVP = "events/DELETE_RSVP";
 
 const load = (list) => ({
   type: LOAD,
@@ -56,9 +56,9 @@ const addRSVP = (event) => ({
   event,
 });
 
-const deleteRSVP = (rsvp) => ({
+const deleteRSVP = (eventId) => ({
   type: DELETE_RSVP,
-  rsvp
+  eventId,
 });
 
 
@@ -89,7 +89,6 @@ export const createEvent = (payload) => async (dispatch) => {
 
 export const getLocations = () => async (dispatch) => {
   const res = await csrfFetch("/api/locations");
-
 
   if (res.ok) {
     const locations = await res.json();
@@ -178,14 +177,18 @@ export const createAttendingEvent = (payload, id) => async (dispatch) => {
   }
 }
 
-export const deleteAttendingEvent = (userId, rsvpId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/users/${userId}/attending/${rsvpId}`, {
-    method: "delete",
-  });
 
+export const deleteAttendingEvent = (userId, eventId) => async (dispatch) => {
+  console.log("EVENTID", eventId)
+  const response = await csrfFetch(
+    `/api/users/${userId}/attending/${eventId}`,
+    {
+      method: "DELETE",
+    }
+  );
   if (response.ok) {
-    const { rsvpId } = await response.json();
-    dispatch(deleteRSVP(rsvpId));
+    const deletedRSVP = response.json();
+    dispatch(deleteRSVP(eventId));
   }
 };
 
@@ -249,15 +252,15 @@ export const eventReducer = (state = initialState, action) => {
     }
     case ADD_RSVP: {
       const newState = { ...state };
-      newState.attending[action.event.id] = action.events;
+      newState.attending.push(action.event)
       return newState;
     }
     case DELETE_RSVP: {
       const newState = { ...state };
-      const newList = { ...newState.list };
-      delete newList[action.rsvpId];
-      newState.list = newList;
+      const newArr = newState.attending.filter(rsvp => rsvp.id !== action.eventId)
+      newState.attending = newArr;
       return newState;
+      // keeping in state the things the action doesn't happen to
     }
     default:
       return state;

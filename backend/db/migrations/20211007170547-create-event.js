@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       attending: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.INTEGER,
       },
       eventAttendees: {
         type: Sequelize.INTEGER,

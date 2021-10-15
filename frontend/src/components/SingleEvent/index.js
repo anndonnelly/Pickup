@@ -5,8 +5,9 @@ import { getOneEvent } from "../../store/event";
 import { getLocations } from "../../store/event";
 import { EventCard } from "../EventPage/EventCard";
 import { createAttendingEvent } from "../../store/event";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import "./SingeEvent.css";
+
 
 const OneEvent = () => {
   const { eventId } = useParams();
@@ -43,6 +44,7 @@ const OneEvent = () => {
 
   return (
     <>
+      <button onClick={() => history.push("/events")}>Events</button>
       <div className="mainCard">
         <EventCard {...event} isEditEnable />
       </div>

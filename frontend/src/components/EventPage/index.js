@@ -35,7 +35,7 @@ const EventPage = () => {
         <div className="eventButtons">
           <CreateEventModal />
         </div>
-        <p>Events</p>
+        <p>All Events</p>
         <button onClick={myEvents}>
           My Events
         </button>

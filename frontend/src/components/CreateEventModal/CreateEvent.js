@@ -20,13 +20,22 @@ function CreateEventForm({ setShowEventModal }) {
   const [typeId, setTypeId] = useState(1);
   const [locationId, setLocationId] = useState(1);
   const [address, setAddress] = useState("");
-  const [cityAndZip, setCityAndZip] = useState("")
+  const [cityAndZip, setCityAndZip] = useState("");
+  const [valErrors, setValErrors] = useState([])
   
 
   useEffect(() => {
     dispatch(getLocations());
     dispatch(getTypes());
   }, [dispatch]);
+
+  useEffect(() => {
+    const errors = [];
+    if (!name) errors.push("Please provide a name for your event");
+    if (!description) errors.push("Please provide a description of your event");
+    if (!address) errors.push("Please provide a valid address for your event");
+    setValErrors(errors)
+  }, [name, description, address])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,6 +67,11 @@ function CreateEventForm({ setShowEventModal }) {
       </div>
       <div>
         <form onSubmit={handleSubmit}>
+          <ul className="errors">
+            {valErrors.map((valError) => (
+              <li key={valError}>{valError}</li>
+            ))}
+          </ul>
           <div className="fieldDiv">
             <label>Event Name</label>
             <input
@@ -141,7 +155,9 @@ function CreateEventForm({ setShowEventModal }) {
             </select>
           </div>
           <div className="createEventButton">
-            <button type="submit">Create Event</button>
+            <button disabled={valErrors.length > 0} type="submit">
+              Create Event
+            </button>
           </div>
         </form>
       </div>

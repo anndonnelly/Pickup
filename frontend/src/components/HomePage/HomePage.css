@@ -1,0 +1,11 @@
+.homePage{
+    background-image: url("https://res.cloudinary.com/dis83syog/image/upload/v1634178316/Pickup/sports-jeux-activites-central-park-new-york-une_kkjbqs.jpg");
+    background-size: cover;
+    width: 100%;
+    /* background-size: fill; */
+    height: 100vh;
+    position: absolute;
+     /* width: 400px; 
+  height: 300px; */
+
+}

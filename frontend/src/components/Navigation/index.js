@@ -5,21 +5,25 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import * as sessionActions from "../../store/session";
 import "./Navigation.css";
+import { useHistory } from "react-router-dom";
 
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-
+  const history = useHistory();
+  
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
 
-  const demoLogin = async (e) => {
+    const demoLogin = async (e) => {
     e.preventDefault();
     setCredential("Demo-lition");
     setPassword("password");
-    return dispatch(
+    const demo = dispatch(
       sessionActions.login({ credential: "Demo-lition", password: "password" })
     );
+    history.push("/home");
+    return demo
   };
 
   let sessionLinks;
@@ -43,7 +47,7 @@ function Navigation({ isLoaded }) {
     <div className="nav-bar">
       <div className="nav-container">
         <div className="home-container">
-          <NavLink className="home-button" exact to="/">
+          <NavLink className="home-button" exact to="/home">
             <img
               src="https://res.cloudinary.com/dis83syog/image/upload/v1633829306/Pickup/PickupLogo_spe2lt.png"
               className="logo"

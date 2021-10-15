@@ -69,10 +69,10 @@ router.post(
 );
 
 router.delete(
-  "/:id/attending/:rsvpId",
+  "/:id/attending/:eventId",
   asyncHandler(async function (req, res) {
-    const RSVP = await UserRepository.createRSVP(req.body);
-    return res.json(RSVP);
+    const rsvpId = await UserRepository.deleteRSVP(req.params.id, req.params.eventId)
+    return res.json(rsvpId)
   })
 );
 

@@ -4,17 +4,20 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SignupForm.css";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [credential, setCredential] = useState("");
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/home" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,6 +34,17 @@ function SignupFormPage() {
       "Confirm Password field must be the same as the Password field",
     ]);
   };
+
+    const demoLogin = async (e) => {
+      e.preventDefault();
+      setCredential("Demo-lition");
+      setPassword("password");
+      const demo = dispatch(
+        sessionActions.login({ credential: "Demo-lition", password: "password" })
+      );
+      history.push("/home");
+      return demo;
+    };
 
   return (
     <div className="signupDiv">
@@ -83,7 +97,13 @@ function SignupFormPage() {
           <div>
             <p className="AlreadyAMemberContainer">
               Already a member?
-              <Link to="/" className="AlreadyAMember"> Log in</Link>.
+              <Link to="/" className="AlreadyAMember">
+                {" "}
+                Log in
+              </Link>
+              .
+              <br />
+              <button onClick={demoLogin}>Demo User</button>
             </p>
           </div>
         </form>

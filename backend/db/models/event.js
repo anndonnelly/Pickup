@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       attending: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.INTEGER,
       },
       locationId: {
         type: DataTypes.INTEGER,
