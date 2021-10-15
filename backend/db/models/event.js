@@ -18,9 +18,9 @@ module.exports = (sequelize, DataTypes) => {
       date: {
         type: DataTypes.STRING,
       },
-      attending: {
-        type: DataTypes.INTEGER,
-      },
+      // attending: {
+      //   type: DataTypes.INTEGER,
+      // },
       locationId: {
         type: DataTypes.INTEGER,
         references: { model: "Locations" },

@@ -20,15 +20,12 @@ module.exports = {
       image: {
         type: Sequelize.STRING,
       },
-      // time: {
-      //   type: Sequelize.STRING,
-      // },
       date: {
         type: Sequelize.STRING,
       },
-      attending: {
-        type: Sequelize.INTEGER,
-      },
+      // attending: {
+      //   type: Sequelize.INTEGER,
+      // },
       eventAttendees: {
         type: Sequelize.INTEGER,
       },

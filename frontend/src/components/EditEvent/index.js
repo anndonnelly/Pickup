@@ -30,6 +30,7 @@ const EditEventForm = ({ event, setIsEditing }) => {
   const updateLocationId = (e) => setLocationId(e.target.value);
   const updateAddress = (e) => setAddress(e.target.value);
   const updateCityAndZip = (e) => setCityAndZip(e.target.value);
+  const [valErrors, setValErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,6 +47,13 @@ const EditEventForm = ({ event, setIsEditing }) => {
       address,
       cityAndZip,
     };
+
+     const errors = [];
+     if (!name) errors.push("Please provide a name for your event");
+     if (!description)
+       errors.push("Please provide a description of your event");
+     if (!address) errors.push("Please provide a valid address for your event");
+     setValErrors(errors);
 
     const updatedEvent = await dispatch(updateEvent(payload));
     if (updatedEvent) {
@@ -77,9 +85,14 @@ const EditEventForm = ({ event, setIsEditing }) => {
         <p>Edit an event</p>
       </div>
       <form onSubmit={handleSubmit}>
+        <ul className="errors">
+          {valErrors.length > 0
+            ? valErrors.map((valError) => <li key={valError}>{valError}</li>)
+            : null}
+        </ul>
         <div className="fieldDiv">
           <label>Event Name</label>
-          <input type="text" required value={name} onChange={updateName} />
+          <input type="text" value={name} onChange={updateName} />
         </div>
         <div className="fieldDiv">
           <label>Description</label>
@@ -87,7 +100,6 @@ const EditEventForm = ({ event, setIsEditing }) => {
             type="text"
             value={description}
             onChange={updateDescription}
-            required
           />
         </div>
         <div className="fieldDiv">
@@ -100,7 +112,6 @@ const EditEventForm = ({ event, setIsEditing }) => {
             type="datetime-local"
             value={date}
             onChange={updateDate}
-            required
           />
         </div>
         <div className="fieldDiv">
@@ -109,7 +120,6 @@ const EditEventForm = ({ event, setIsEditing }) => {
             type="number"
             value={eventAttendees}
             onChange={updateEventAttendees}
-            required
           />
         </div>
         <div className="fieldDiv">
@@ -128,7 +138,6 @@ const EditEventForm = ({ event, setIsEditing }) => {
             type="text"
             value={cityAndZip}
             onChange={updateCityAndZip}
-            required
           />
         </div>
         <div className="fieldDiv">
@@ -142,7 +151,9 @@ const EditEventForm = ({ event, setIsEditing }) => {
           </select>
         </div>
         <div className="createEventButton editButtonDiv">
-          <button type="submit">Create New Event</button>
+          <button disabled={valErrors.length > 0} type="submit">
+            Create New Event
+          </button>
           <button type="button" onClick={handleCancelClick}>
             Cancel
           </button>

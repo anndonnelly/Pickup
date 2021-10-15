@@ -41,7 +41,6 @@ router.post(
   }),
 );
 
-
 router.get(
   "/:id/hosting",
   asyncHandler(async (_req, res) => {
@@ -49,7 +48,6 @@ router.get(
     const events = await UserRepository.listMyHostingEvents(id);
     return res.json(events);
   }));
-
 
 router.get(
   "/:id/attending",
@@ -76,6 +74,14 @@ router.delete(
   })
 );
 
+router.get(
+  "/:id/hosting",
+  asyncHandler(async (_req, res) => {
+    let { id } = _req.params;
+    const events = await UserRepository.listMyHostingEvents(id);
+    return res.json(events);
+  })
+);
 
 
 module.exports = router;

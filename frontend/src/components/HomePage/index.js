@@ -15,8 +15,6 @@ const HomePage = () => {
           <button onClick={() => history.push("./events")}>
             Discover Events
           </button>
-          <lable>Find your next event:</lable>
-          <input type="input"></input>
         </div>
       </div>
     </>

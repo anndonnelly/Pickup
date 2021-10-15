@@ -32,6 +32,7 @@ function AttendingEvent() {
       <MyEvents />
       <div>
         {" "}
+        
         {events.map((event) => (
           <div>
             <EventCard {...event} key={event.id} />

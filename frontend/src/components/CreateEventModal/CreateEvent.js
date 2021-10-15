@@ -29,9 +29,9 @@ function CreateEventForm({ setShowEventModal }) {
     dispatch(getTypes());
   }, [dispatch]);
 
-  // useEffect(() => {
-    
-  // }, [name, description, address])
+  useEffect(() => {
+
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,7 +51,13 @@ function CreateEventForm({ setShowEventModal }) {
 
 
     const errors = [];
-    if (!name) errors.push("Please provide a name for your event");
+    if (name.length < 4) errors.push("Please provide an event name with at least 4 characters.");
+    if (name) errors.push("This username already exists")
+    //TODO
+    // if (date1.getTime() > date2.getTime()) {
+    //   errors.push(
+    //     "'Please provide a date that is in the futute for your event'"
+    //   );}
     if (!description) errors.push("Please provide a description of your event");
     if (!address) errors.push("Please provide a valid address for your event");
     setValErrors(errors);
@@ -107,6 +113,7 @@ function CreateEventForm({ setShowEventModal }) {
             <input
               type="datetime-local"
               value={date}
+              required 
               onChange={(e) => setDate(e.target.value)}
             />
           </div>
@@ -154,7 +161,7 @@ function CreateEventForm({ setShowEventModal }) {
             </select>
           </div>
           <div className="createEventButton">
-            <button disabled={valErrors.length > 0} type="submit">
+            <button type="submit">
               Create Event
             </button>
           </div>
@@ -168,12 +175,6 @@ export default CreateEventForm;
 
 
 
-// eventAttendees: 6,
-// locationId: 1,
-// ownerId: 2,
-// typeId: 3,
-// createdAt: faker.date.past(1),
-// updatedAt: new Date(),
 
 
 

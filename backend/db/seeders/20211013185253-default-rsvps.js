@@ -10,11 +10,11 @@ module.exports = {
           userId: 1,
         },
         {
-          eventId: 2,
+          eventId: 1,
           userId: 1,
         },
         {
-          eventId: 3,
+          eventId: 1,
           userId: 1,
         },
         {

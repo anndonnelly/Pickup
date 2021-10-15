@@ -9,5 +9,5 @@ const listLocations = async () => {
 
 
 module.exports = {
-  listLocations,
+  listLocations
 };

@@ -7,13 +7,14 @@ import { useDispatch } from "react-redux";
 import { deleteEvent } from "../../store/event";
 import { getTypes } from "../../store/event";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import {getAllRSVPs} from  "../../store/event";
 
-export const EventCard = ({ id, image, date, name, description}) => {
+export const EventCard = ({ id, name, description, image, date, eventAttendees }) => {
   const [isEditing, setIsEditing] = useState(false);
   const events = useSelector((state) => state.event);
   const dispatch = useDispatch();
-
-  // const event = events.list[ "asasasa", eventId]
+  const history = useHistory();
 
   const event = events.list[id];
   // const location = event?.Location
@@ -27,6 +28,7 @@ export const EventCard = ({ id, image, date, name, description}) => {
 
   useEffect(() => {
     dispatch(getTypes());
+    dispatch(getAllRSVPs(id));
   }, [dispatch]);
 
   return (
@@ -54,9 +56,8 @@ export const EventCard = ({ id, image, date, name, description}) => {
         <p className="font-bold">{name}</p>
         <p>{type?.name}</p>
         <p>{description}</p>
-        {/* <label>Attending: </label> */}
-        {/* <input type="checkbox" value={} onChange={} /> */}
       </div>
+      <p>Event Attendees: {eventAttendees}</p>
       <div className="editCard">
         <button value={isEditing} onClick={() => setIsEditing(true)}>
           {/* href="#" */}
@@ -70,13 +71,19 @@ export const EventCard = ({ id, image, date, name, description}) => {
             />
           </Modal>
         )}
-        <button value={id} onClick={() => dispatch(deleteEvent(id))}>
+        <button
+          value={id}
+          onClick={() => {
+            dispatch(deleteEvent(id));
+            history.push("/events");
+          }}
+        >
           Delete
         </button>
       </div>
     </div>
   );
-}
+};
 
 
 
