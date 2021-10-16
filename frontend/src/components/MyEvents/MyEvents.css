@@ -20,12 +20,13 @@
 
 .attendingTabOnClick{
     text-decoration: underline;
-    /* text-decoration-color: rgba(0, 130, 148, 1); */
-    background-color: teal;
+    text-decoration-color: rgba(0, 130, 148, 1);
+    
 }
 
 .hostingTabOnClick{
    text-decoration: underline;
    text-decoration-color: rgba(0, 130, 148, 1);
+
 }
 
