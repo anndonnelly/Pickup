@@ -6,8 +6,7 @@ import { getLocations } from "../../store/event";
 import { EventCard } from "../EventPage/EventCard";
 import { createAttendingEvent } from "../../store/event";
 import { useHistory } from "react-router-dom";
-import "./SingeEvent.css";
-
+// import "./SingeEvent.css";
 
 const OneEvent = () => {
   const { eventId } = useParams();
@@ -17,7 +16,7 @@ const OneEvent = () => {
     return state.event.list[eventId] ?? {};
   });
 
-  const userId = useSelector(state => state.session?.user?.id)
+  const userId = useSelector((state) => state.session?.user?.id);
 
   //  const location = useSelector((state) => {
   //    return state.event.list[locationId];
@@ -29,26 +28,23 @@ const OneEvent = () => {
   }, [dispatch, eventId]);
   //  const location = getLocations.find(event.locationId === location.id);
 
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-    const payload = { 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const payload = {
       eventId,
-      userId
-
+      userId,
+    };
+    let createdRSVP = await dispatch(createAttendingEvent(payload, eventId));
+    if (createdRSVP) {
+      history.push(`/users/${userId}/attending`);
     }
-    let createdRSVP = await dispatch(createAttendingEvent(payload, eventId))
-    if (createdRSVP){
-      history.push(`/users/${userId}/attending`)
-    }
-  }
+  };
 
-
- 
   return (
     <>
       <div className="buttonPosition">
         <button
-          className="getBackToEventsPage"
+          className="getBackToEventsPage my-event-buttons"
           onClick={() => history.push("/events")}
         >
           All Events
@@ -58,7 +54,7 @@ const OneEvent = () => {
         </button>
       </div>
       <div className="mainCard">
-        <EventCard {...event} isEditEnable />
+        <EventCard {...event} isEditEnabled />
       </div>
     </>
   );

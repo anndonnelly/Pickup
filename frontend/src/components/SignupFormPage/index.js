@@ -101,10 +101,12 @@ function SignupFormPage() {
                 {" "}
                 Log in
               </Link>
-              .
-              <br />
-              <button onClick={demoLogin}>Demo User</button>
+              .{" "}
             </p>
+       
+            <button className="demoButton" onClick={demoLogin}>
+              Demo User
+            </button>
           </div>
         </form>
       </div>

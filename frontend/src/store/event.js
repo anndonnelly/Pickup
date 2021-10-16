@@ -161,7 +161,7 @@ export const getMyAttendingEvents = (id) => async (dispatch) => {
 };
 
 export const getMyHostedEvents = (id) => async (dispatch) => {
-  const res = await csrfFetch(`/api/users/${id}/hosting`);
+  const res = await csrfFetch(`/api/users/${id}/events`);
   if (res.ok) {
     const events = await res.json();
     dispatch(loadHosting(events));
@@ -169,7 +169,7 @@ export const getMyHostedEvents = (id) => async (dispatch) => {
 };
 
 export const createAttendingEvent = (payload, id) => async (dispatch) => {
-  const res = await csrfFetch(`/api/users/${id}/attending`, {
+  const res = await csrfFetch(`/api/users/${id}/events`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

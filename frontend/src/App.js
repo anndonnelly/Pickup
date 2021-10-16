@@ -11,6 +11,7 @@ import OneEvent from "./components/SingleEvent";
 import AttendingEvent from "./components/Attending";
 import HostingEvent from "./components/Hosting";
 // import HomePage from "./components/HomePage";
+import MyEvents from "./components/MyEvents";
 
 
 function App() {
@@ -43,12 +44,12 @@ function App() {
           <Route path="/events/:eventId">
             <OneEvent />
           </Route>
-          <Route path="/users/:userId/attending">
-            <AttendingEvent />
+          <Route path="/users/:userId/my-events">
+            <MyEvents />
           </Route>
-          <Route path="/users/:userId/hosting">
-            <HostingEvent />
-          </Route>
+          {/* <Route path="/users/:userId/hosting">
+            <HostingEvent /> */}
+          {/* </Route>  */}
         </Switch>
       )}
       <Footer />

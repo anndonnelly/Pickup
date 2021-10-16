@@ -1,32 +1,22 @@
 .tabs {
-    display: flex;
-    flex-direction: row;
-    color:blue;
-    margin-top: 5px;
-    margin-bottom: 25px;
-    margin-left: 8px;
-    
+  display: flex;
+  flex-direction: row;
+  color: blue;
+  margin-top: 5px;
+  margin-bottom: 25px;
+  margin-left: 8px;
 }
 
-.attendingTab {
-    margin-right: 5px;
-    text-decoration: none;
-  
+.tabs button {
+  border-style: none;
+  background-color: transparent;
+  color: grey;
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 5px;
 }
 
-.hostingTab {
-    text-decoration: none;
+.tabs .active {
+  border-bottom: 2px solid teal;
+  color: teal;
 }
-
-.attendingTabOnClick{
-    text-decoration: underline;
-    text-decoration-color: rgba(0, 130, 148, 1);
-    
-}
-
-.hostingTabOnClick{
-   text-decoration: underline;
-   text-decoration-color: rgba(0, 130, 148, 1);
-
-}
-

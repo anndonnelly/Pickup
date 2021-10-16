@@ -15,7 +15,7 @@
 
 .cardDiv {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 
 .cardDiv:hover {
@@ -27,11 +27,9 @@
   padding: 10px;
 }
 
-
-
 /* FRIDAY NIGHT CSS ADDITION */
 
-.getBackToEventsPage{
+.getBackToEventsPage {
   width: 120px;
   height: 40px;
   border-radius: 8px;
@@ -42,15 +40,14 @@
   padding: 4px 8px;
   margin-bottom: 20px;
   margin-right: 10px;
-
 }
 
 .buttonPosition {
-   display: flex;
-    flex-direction: row-reverse;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
-.attendButton{
+.attendButton {
   width: 120px;
   height: 40px;
   border-radius: 8px;
