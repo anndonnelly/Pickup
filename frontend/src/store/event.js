@@ -198,11 +198,13 @@ export const deleteAttendingEvent = (userId, eventId) => async (dispatch) => {
   }
 };
 
-export const getAllRSVPs = (id) => async (dispatch) => {
+export const getAllrsvps = () => async (dispatch) => {
  
-  const response = await csrfFetch(`/api/rsvps/${id}`)
+  const response = await csrfFetch(`/api/rsvps`)
   if (response.ok) {
-    const allRSVPs = response.json();
+    
+    const allRSVPs = await response.json();
+     console.log("-------->", allRSVPs);
     dispatch(getAllRSVPS(allRSVPs));
   }
 };
@@ -268,12 +270,12 @@ export const eventReducer = (state = initialState, action) => {
     }
     case ADD_RSVP: {
       const newState = { ...state };
-      newState.attending.push(action.event);
+      newState.rsvps.push(action.event);
       return newState;
     }
     case DELETE_RSVP: {
       const newState = { ...state };
-      const newArr = newState.attending.filter(
+      const newArr = newState.rsvps.filter(
         (rsvp) => rsvp.id !== action.eventId
       );
       newState.attending = newArr;

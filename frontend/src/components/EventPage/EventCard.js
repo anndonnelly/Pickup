@@ -8,13 +8,18 @@ import { deleteEvent } from "../../store/event";
 import { getTypes } from "../../store/event";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import {getAllRSVPs} from  "../../store/event";
+import { getAllrsvps } from "../../store/event";
 
 export const EventCard = ({ id, name, description, image, date, eventAttendees }) => {
   const [isEditing, setIsEditing] = useState(false);
   const events = useSelector((state) => state.event);
   const dispatch = useDispatch();
   const history = useHistory();
+  let rsvpArr = useSelector((state) => state?.event?.rsvps);
+  rsvpArr = rsvpArr?.filter((rsvp) => rsvp.eventId === id);
+  // console.log("fffffff",rsvpArr);
+  const attending = rsvpArr?.length;
+  // const attending = events.attending.filter(rsvp => )
 
   const event = events.list[id];
   // const location = event?.Location
@@ -28,8 +33,8 @@ export const EventCard = ({ id, name, description, image, date, eventAttendees }
 
   useEffect(() => {
     dispatch(getTypes());
-    dispatch(getAllRSVPs(id));
-  }, [dispatch]);
+    dispatch(getAllrsvps(id));
+  }, [dispatch, id]);
 
   return (
     <div className="cardDiv">
@@ -57,7 +62,7 @@ export const EventCard = ({ id, name, description, image, date, eventAttendees }
         <p>{type?.name}</p>
         <p>{description}</p>
       </div>
-      <p>Event Attendees: {eventAttendees}</p>
+      <p>{`Event Attendees: ${attending} / ${eventAttendees}`}</p>
       <div className="editCard">
         <button value={isEditing} onClick={() => setIsEditing(true)}>
           {/* href="#" */}

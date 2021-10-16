@@ -1,9 +1,9 @@
-const { Event } = require("./models");
-const {RSVP} = require("./models")
+
+const {RSVP, User} = require("./models")
+
 
 const listRSVPs = async (eventId) => {
-  return RSVP.findAll({ where: {eventId}}
-  );
+  return RSVP.findAll();
 };
 
 

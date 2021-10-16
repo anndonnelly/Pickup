@@ -7,67 +7,73 @@ module.exports = {
       "Types",
       [
         {
-          name: "Football",
+          name: "Football", //
         },
         {
-          name: "Soccer",
+          name: "Soccer", // //
         },
         {
-          name: "Basketball",
+          name: "Basketball", // //
         },
         {
           name: "Badminton",
         },
         {
-          name: "Tennis",
+          name: "Tennis", // // // 
         },
         {
-          name: "Table Tennis",
+          name: "Table Tennis", //
         },
         {
-          name: "Pool",
+          name: "Pool", //
         },
         {
-          name: "Baseball",
+          name: "Baseball", //
         },
         {
-          name: "Volleyball",
+          name: "Volleyball", //
         },
         {
-          name: "Gaelic Football",
+          name: "Gaelic Football", //
         },
         {
-          name: "Rugby",
+          name: "Rugby", //
         },
         {
-          name: "Running",
+          name: "Running", //
         },
         {
           name: "Pickleball",
         },
         {
-          name: "Softball",
+          name: "Softball", //
         },
         {
-          name: "November Project",
+          name: "November Project", //
         },
         {
-          name: "Flag Football",
+          name: "Flag Football", //
         },
         {
-          name: "Cricket",
+          name: "Cricket", //
         },
         {
-          name: "Cycling",
+          name: "Cycling", //
         },
         {
           name: "Hockey",
         },
         {
-          name: "New York Marathon Training",
+          name: "New York Marathon Training", //
         },
         {
-          name: "Hurling",
+          name: "Hurling", //
+        },
+        {
+          name: "Frisbee", //
+        },
+        {
+          name: "Cornhole", //
         },
       ],
       {}
@@ -81,3 +87,6 @@ module.exports = {
     
   }
 };
+
+
+// 23

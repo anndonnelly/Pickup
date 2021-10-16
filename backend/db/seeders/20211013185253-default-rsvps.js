@@ -10,24 +10,24 @@ module.exports = {
           userId: 1,
         },
         {
-          eventId: 1,
+          eventId: 2,
+          userId: 1,
+        },
+        {
+          eventId: 3,
           userId: 1,
         },
         {
           eventId: 1,
-          userId: 1,
+          userId: 2,
         },
         {
-          eventId: 4,
-          userId: 1,
+          eventId: 2,
+          userId: 2,
         },
         {
-          eventId: 5,
-          userId: 1,
-        },
-        {
-          eventId: 6,
-          userId: 1,
+          eventId: 3,
+          userId: 2,
         },
       ],
       {}
