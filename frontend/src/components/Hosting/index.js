@@ -20,7 +20,7 @@ function HostingEvent() {
     return (
       <>
         <MyEvents />
-          <div>
+          <div className="myEventsPage">
             {events?.map((event) => (
               <EventCard key={event.id} {...event} />
             ))}

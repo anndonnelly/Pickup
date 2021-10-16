@@ -42,15 +42,24 @@ const OneEvent = () => {
     }
   }
 
+
+ 
   return (
     <>
-      <button onClick={() => history.push("/events")}>Events</button>
+      <div className="buttonPosition">
+        <button
+          className="getBackToEventsPage"
+          onClick={() => history.push("/events")}
+        >
+          All Events
+        </button>
+        <button className="attendButton" onClick={handleSubmit}>
+          Attend
+        </button>
+      </div>
       <div className="mainCard">
         <EventCard {...event} isEditEnable />
       </div>
-      <button className="attendButton"onClick={handleSubmit}>
-        Attend
-      </button>
     </>
   );
 };

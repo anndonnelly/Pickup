@@ -17,7 +17,7 @@ function SignupFormPage() {
   const [errors, setErrors] = useState([]);
   const [credential, setCredential] = useState("");
 
-  if (sessionUser) return <Redirect to="/home" />;
+  if (sessionUser) return <Redirect to="/events" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +42,7 @@ function SignupFormPage() {
       const demo = dispatch(
         sessionActions.login({ credential: "Demo-lition", password: "password" })
       );
-      history.push("/home");
+      history.push("/events");
       return demo;
     };
 

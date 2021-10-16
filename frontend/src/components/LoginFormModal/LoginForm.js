@@ -19,11 +19,11 @@ function LoginForm() {
         const data = await res.json();
         if (data && data.errors) {
           setErrors(data.errors)
-        } else {
-          history.push("/home")
-        };
+        } 
       },
+      
     ); 
+    history.push("/events")
     return logIn;
   };
 

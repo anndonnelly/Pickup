@@ -23,6 +23,7 @@
   width: 80%;
   display: flex;
   flex-direction: row-reverse;
+  
 }
 .cardDiv {
   display: flex;
@@ -54,4 +55,22 @@
 
 .editCard button:hover {
   color: rgba(0, 130, 148, 1);
+}
+
+
+
+
+/* FRIDAY NIGHT CSS ADDITION */
+
+.my-events-button{
+  width: 120px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  background-color: rgba(0, 130, 148, 1);
+  border-color: rgba(0, 130, 148, 1);
+  padding: 4px 8px;
+  margin-bottom: 20px;
+  margin-right: 10px;
 }

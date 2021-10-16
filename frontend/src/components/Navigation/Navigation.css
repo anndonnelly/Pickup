@@ -84,20 +84,9 @@
   width: 4cm;
 }
 
-/* .demo-user {
-  text-align: center;
+.demoUserSignUp{
+  
 }
-
-.demo-user button {
-  width: 100%;
-  height: 50px;
-  border-radius: 8px;
-  cursor: pointer;
-  color: #fff;
-  background-color: #f65858;
-  border-color: #f65858;
-  padding: 8px 12px;
-} */
 
 .logoutButton {
   width: 90px;

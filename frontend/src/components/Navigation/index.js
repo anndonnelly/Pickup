@@ -22,7 +22,7 @@ function Navigation({ isLoaded }) {
     const demo = dispatch(
       sessionActions.login({ credential: "Demo-lition", password: "password" })
     );
-    history.push("/home");
+    history.push("/events");
     return demo
   };
 
@@ -36,7 +36,7 @@ function Navigation({ isLoaded }) {
         <NavLink className="signupbutton" to="/signup">
           Sign Up
         </NavLink>
-        <a href="#" onClick={demoLogin}>
+        <a className="demoUserSignUp" href="#" onClick={demoLogin}>
           Demo User
         </a>
       </>
@@ -47,7 +47,7 @@ function Navigation({ isLoaded }) {
     <div className="nav-bar">
       <div className="nav-container">
         <div className="home-container">
-          <NavLink className="home-button" exact to="/home">
+          <NavLink className="home-button" exact to="/events">
             <img
               src="https://res.cloudinary.com/dis83syog/image/upload/v1633829306/Pickup/PickupLogo_spe2lt.png"
               className="logo"

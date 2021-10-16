@@ -17,7 +17,7 @@ export const EventCard = ({ id, name, description, image, date, eventAttendees }
   const history = useHistory();
   let rsvpArr = useSelector((state) => state?.event?.rsvps);
   rsvpArr = rsvpArr?.filter((rsvp) => rsvp.eventId === id);
-  // console.log("fffffff",rsvpArr);
+  
   const attending = rsvpArr?.length;
   // const attending = events.attending.filter(rsvp => )
 
@@ -62,7 +62,7 @@ export const EventCard = ({ id, name, description, image, date, eventAttendees }
         <p>{type?.name}</p>
         <p>{description}</p>
       </div>
-      <p>{`Event Attendees: ${attending} / ${eventAttendees}`}</p>
+        <p>{`Event Attendees: ${attending} / ${eventAttendees}`}</p>
       <div className="editCard">
         <button value={isEditing} onClick={() => setIsEditing(true)}>
           {/* href="#" */}

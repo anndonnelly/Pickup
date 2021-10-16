@@ -10,7 +10,7 @@ import EventPage from "./components/EventPage";
 import OneEvent from "./components/SingleEvent";
 import AttendingEvent from "./components/Attending";
 import HostingEvent from "./components/Hosting";
-import HomePage from "./components/HomePage";
+// import HomePage from "./components/HomePage";
 
 
 function App() {
@@ -34,9 +34,9 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/home">
-            <HomePage/>
-          </Route>
+          {/* <Route path="/home">
+            <HomePage />
+          </Route> */}
           <Route exact path="/events">
             <EventPage />
           </Route>

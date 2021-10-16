@@ -185,7 +185,7 @@ export const createAttendingEvent = (payload, id) => async (dispatch) => {
 
 
 export const deleteAttendingEvent = (userId, eventId) => async (dispatch) => {
-  console.log("EVENTID", eventId)
+
   const response = await csrfFetch(
     `/api/users/${userId}/attending/${eventId}`,
     {
@@ -204,7 +204,7 @@ export const getAllrsvps = () => async (dispatch) => {
   if (response.ok) {
     
     const allRSVPs = await response.json();
-     console.log("-------->", allRSVPs);
+
     dispatch(getAllRSVPS(allRSVPs));
   }
 };

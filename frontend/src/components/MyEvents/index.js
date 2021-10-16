@@ -3,6 +3,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch} from "react-redux";
 import { useEffect } from "react";
 import { getMyAttendingEvents, getMyHostedEvents } from "../../store/event";
+import "./MyEvents.css"
 
 // import { useParams } from "react-router";
 
@@ -17,12 +18,39 @@ function MyEvents() {
     dispatch(getMyHostedEvents(userId));
   }, [dispatch]);
 
+  const underLineAttending = () => {
+    const element = document.getElementsByClassName("attendingTab");
+    element.className.remove("hostingTabOnClick");
+    element.className.add("attendingTabOnClick")
+    
+  }
+
+  const underLineHosting = () => {
+    const element = document.getElementsByClassName("hostingTab");
+    element.className.remove("attendingTabOnClick");
+    element.className.add("hostingTabOnClick")
+    
+    
+  }
 
   return (
     <>
-      <NavLink to={`/users/${userId}/attending`}>Attending</NavLink>
-      <NavLink to={`/users/${userId}/hosting`}>Hosting</NavLink>
-
+      <div className="tabs">
+        <NavLink
+          className="attendingTab"
+          to={`/users/${userId}/attending`}
+          onClick={underLineAttending}
+        >
+          Attending
+        </NavLink>
+        <NavLink
+          className="hostingTab"
+          to={`/users/${userId}/hosting`}
+          onClick={underLineHosting}
+        >
+          Hosting
+        </NavLink>
+      </div>
     </>
   );
 }

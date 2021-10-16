@@ -14,7 +14,7 @@ const EventPage = () => {
     return Object.values(state.event.list);
   });
 
-  const userId = useSelector(state => state.session.user.id)
+  const userId = useSelector(state => state?.session?.user?.id)
 
   useEffect(() => {
     dispatch(getEvents());
@@ -34,11 +34,11 @@ const EventPage = () => {
       <div className="mainCard">
         <div className="eventButtons">
           <CreateEventModal />
+          <button className="my-events-button" onClick={myEvents}>
+            My Events
+          </button>
         </div>
         <p>All Events</p>
-        <button onClick={myEvents}>
-          My Events
-        </button>
         {events?.map((event) => (
           <div>
             <EventCard {...event} />
