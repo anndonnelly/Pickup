@@ -40,6 +40,8 @@
 }
 .font-bold {
   font-weight: 600;
+  cursor: pointer;
+  
 }
 
 .editCard button {

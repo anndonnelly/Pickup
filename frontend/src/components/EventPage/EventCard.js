@@ -34,6 +34,7 @@ export const EventCard = ({
   const type = event?.Type;
   // const typeName = event?.Type.name
 
+
   const locationName = event?.Location?.name;
   const locationAddress = event?.Location?.address;
   const locationCity = event?.Location?.city;
@@ -42,12 +43,14 @@ export const EventCard = ({
   useEffect(() => {
     dispatch(getTypes());
     dispatch(getAllrsvps(id));
-  }, [dispatch, id]);
+  }, [dispatch, id,]);
 
   useEffect(() => {
     if (isEditing) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "auto";
   }, [isEditing]);
+
+
   return (
     <div className="cardDiv">
       <div className="cardHeader">
@@ -62,7 +65,12 @@ export const EventCard = ({
               minute: "numeric",
             })}
           </span>
-          <span className="font-bold">{name}</span>
+          <span
+            onClick={() => history.push(`/events/${id}`)}
+            className="font-bold"
+          >
+            {name}
+          </span>
           <span className="colorGrey">{`${locationName} ${locationAddress} ${locationCity} ${locationZipCode}`}</span>
           <span className="cardDescription">{description}</span>
           <div>
@@ -102,3 +110,6 @@ export const EventCard = ({
     </div>
   );
 };
+
+
+

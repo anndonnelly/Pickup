@@ -20,3 +20,19 @@
   border-bottom: 2px solid teal;
   color: teal;
 }
+
+.AllEventsContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 70px
+}
+
+
+.MyEventPosition {
+    margin-left: 50px;
+}
+
+.title {
+    margin-left: 10px;
+    margin-bottom: 20px
+}

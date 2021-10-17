@@ -152,7 +152,7 @@ const EditEventForm = ({ event, setIsEditing }) => {
         </div>
         <div className="createEventButton editButtonDiv">
           <button disabled={valErrors.length > 0} type="submit">
-            Create New Event
+          Update your Event
           </button>
           <button type="button" onClick={handleCancelClick}>
             Cancel

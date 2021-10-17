@@ -103,7 +103,6 @@ function SignupFormPage() {
               </Link>
               .{" "}
             </p>
-       
             <button className="demoButton" onClick={demoLogin}>
               Demo User
             </button>

@@ -1,41 +1,46 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+// import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getMyAttendingEvents, getMyHostedEvents } from "../../store/event";
 import { EventCard } from "../EventPage/EventCard";
 import "./MyEvents.css";
+import { getLocations } from "../../store/event";
+import { deleteAttendingEvent } from "../../store/event";
 // import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 
 function MyEvents() {
   const userId = useSelector((state) => state.session?.user.id);
   const [tabState, setTabState] = useState("attending");
   const dispatch = useDispatch();
   const events = useSelector((state) => state?.event);
+  const history = useHistory();
+
+  const [counter, setCounter] = useState(0);
+  // Dzan addition
 
   useEffect(() => {
     tabState === "attending" && dispatch(getMyAttendingEvents(userId));
     tabState === "hosting" && dispatch(getMyHostedEvents(userId));
-  }, [tabState]);
+    // dispatch(getLocations());
+  }, [tabState, counter]);
 
-  // const underLineAttending = () => {
-  //   const element1 = document.querySelector(".attendingTab");
-  //   const element2 = document.querySelector(".hostingTab");
-  //   element2.classList.remove("hostingTabOnClick");
-  //   element1.classList.add("attendingTabOnClick")
-  // }
-
-  // const underLineHosting = () => {
-  //   const element1 = document.querySelector(".attendingTab");
-  //   const element2 = document.querySelector(".hostingTab");
-  //   element1.classList.remove("attendingTabOnClick");
-  //   element2.classList.add("hostingTabOnClick")
-  // }
+  const handleDelete = (event) => {
+    const eventId = event.target.value;
+    setCounter((prev) => prev + 1);
+    dispatch(deleteAttendingEvent(userId, eventId));
+    dispatch(getMyAttendingEvents(userId));
+  };
 
   return (
     <>
+      <div className="AllEventsContainer">
+        <button className="my-events-button"onClick={() => history.push("/events")}>All Events</button>
+      </div>
+      <div className="MyEventPosition">
       <div>
-        <h2>My Events</h2>
+        <h2 className="title">My Events</h2>
       </div>
       <div className="tabs">
         <button
@@ -51,12 +56,17 @@ function MyEvents() {
           Hosting
         </button>
       </div>
+      </div>
       <div className="myEventsPage">
         {tabState === "attending" &&
           events?.[tabState]?.map((event) => (
-            <EventCard key={event.id} {...event} isEditEnabled />
+            <div>
+              <EventCard key={event.id} {...event} isEditEnabled />
+              <button value={event.id} onClick={handleDelete}>
+                Cancel RSVP
+              </button>
+            </div>
           ))}
-
         {events?.[tabState]?.Events?.map((event) => (
           <EventCard key={event.id} {...event} isEditEnabled />
         ))}
@@ -66,41 +76,3 @@ function MyEvents() {
 }
 
 export default MyEvents;
-
-//  return (
-//     <>
-//       <div className="tabs">
-//         <NavLink
-//           className={clickedAttending ? "attendingTabOnClick" : "attendingTab"}
-//           to={`/users/${userId}/attending`}
-//           onClick={() => {
-//             if (clickedAttending) {
-//               return;
-//             } else {
-//               setClickedAttending(false);
-//             }
-//           }}
-//         >
-//           Attending
-//         </NavLink>
-//         <NavLink
-//           className={clickedHosting ? "hostingTabOnClick" : "hostingTab"}
-//           to={`/users/${userId}/hosting`}
-//           onClick={() => {
-//             if (!clickedHosting) {
-//               setClickedHosting(true);
-//               setClickedAttending(false);
-//               return;
-//             } else {
-//               setClickedHosting(true);
-//             }
-//           }}
-//         >
-//           Hosting
-//         </NavLink>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default MyEvents;

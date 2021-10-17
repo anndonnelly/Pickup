@@ -27,7 +27,6 @@
   padding: 10px;
 }
 
-/* FRIDAY NIGHT CSS ADDITION */
 
 .getBackToEventsPage {
   width: 120px;
@@ -45,6 +44,7 @@
 .buttonPosition {
   display: flex;
   flex-direction: row-reverse;
+  
 }
 
 .attendButton {

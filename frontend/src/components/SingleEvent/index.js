@@ -36,7 +36,7 @@ const OneEvent = () => {
     };
     let createdRSVP = await dispatch(createAttendingEvent(payload, eventId));
     if (createdRSVP) {
-      history.push(`/users/${userId}/attending`);
+      history.push(`/users/${userId}/my-events`);
     }
   };
 
@@ -50,7 +50,7 @@ const OneEvent = () => {
           All Events
         </button>
         <button className="attendButton" onClick={handleSubmit}>
-          Attend
+          Click to Attend
         </button>
       </div>
       <div className="mainCard">
