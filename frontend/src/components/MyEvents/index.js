@@ -36,39 +36,46 @@ function MyEvents() {
   return (
     <>
       <div className="AllEventsContainer">
-        <button className="my-events-button"onClick={() => history.push("/events")}>All Events</button>
+        <button
+          className="my-events-button"
+          onClick={() => history.push("/events")}
+        >
+          All Events
+        </button>
       </div>
       <div className="MyEventPosition">
-      <div>
-        <h2 className="title">My Events</h2>
-      </div>
-      <div className="tabs">
-        <button
-          className={tabState === "attending" && "active"}
-          onClick={() => setTabState("attending")}
-        >
-          Attending
-        </button>
-        <button
-          className={tabState === "hosting" && "active"}
-          onClick={() => setTabState("hosting")}
-        >
-          Hosting
-        </button>
-      </div>
+        <div>
+          <h2 className="title">My Events</h2>
+        </div>
+        <div className="tabs">
+          <button
+            className={tabState === "attending" && "active"}
+            onClick={() => setTabState("attending")}
+          >
+            Attending
+          </button>
+          <button
+            className={tabState === "hosting" && "active"}
+            onClick={() => setTabState("hosting")}
+          >
+            Hosting
+          </button>
+        </div>
       </div>
       <div className="myEventsPage">
-        {tabState === "attending" &&
-          events?.[tabState]?.map((event) => (
-            <div>
-              <EventCard key={event.id} {...event} isEditEnabled />
-              <button value={event.id} onClick={handleDelete}>
+        {events?.[tabState]?.map((event) => (
+          <div>
+            <EventCard key={event.id} {...event} isEditEnabled />
+            {tabState === "attending" && (
+              <button
+                className="cancelButtonRsvp"
+                value={event.id}
+                onClick={handleDelete}
+              >
                 Cancel RSVP
               </button>
-            </div>
-          ))}
-        {events?.[tabState]?.Events?.map((event) => (
-          <EventCard key={event.id} {...event} isEditEnabled />
+            )}
+          </div>
         ))}
       </div>
     </>

@@ -22,17 +22,28 @@
 }
 
 .AllEventsContainer {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 70px
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 70px;
 }
 
-
 .MyEventPosition {
-    margin-left: 50px;
+  margin-left: 50px;
 }
 
 .title {
-    margin-left: 10px;
-    margin-bottom: 20px
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+.cancelButtonRsvp {
+  width: 120px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  background-color: rgba(0, 130, 148, 1);
+  border-color: rgba(0, 130, 148, 1);
+  padding: 4px 8px;
+  margin-left: 65px;
+  margin-bottom: 20px;
 }

@@ -57,16 +57,17 @@ const addRSVP = (event) => ({
   event,
 });
 
-const deleteRSVP = (eventId) => ({
+const deleteRSVP = (eventId, userId) => ({
   type: DELETE_RSVP,
   eventId,
+  userId,
 });
 
-const getAllRSVPS = (rsvps) => ({
+const getAllRSVPS = (rsvps, id) => ({
   type: ALL_RSVPS,
   rsvps,
+  id,
 });
-
 
 export const getEvents = () => async (dispatch) => {
   const res = await csrfFetch("/api/events");
@@ -153,7 +154,7 @@ export const deleteEvent = (eventId) => async (dispatch) => {
 
 export const getMyAttendingEvents = (id) => async (dispatch) => {
   const res = await csrfFetch(`/api/users/${id}/attending`);
-  
+
   if (res.ok) {
     const events = await res.json();
     dispatch(loadAttending(events.reservations));
@@ -164,7 +165,7 @@ export const getMyHostedEvents = (id) => async (dispatch) => {
   const res = await csrfFetch(`/api/users/${id}/hosting`);
   if (res.ok) {
     const events = await res.json();
-    dispatch(loadHosting(events));
+    dispatch(loadHosting(events.reservations));
   }
 };
 
@@ -176,16 +177,14 @@ export const createAttendingEvent = (payload, id) => async (dispatch) => {
     },
     body: JSON.stringify(payload),
   });
-  if (res.ok){
-    const createRSVP = res.json()
+  if (res.ok) {
+    const createRSVP = await res.json();
     dispatch(addRSVP(createRSVP));
     return createRSVP;
   }
-}
-
+};
 
 export const deleteAttendingEvent = (userId, eventId) => async (dispatch) => {
-
   const response = await csrfFetch(
     `/api/users/${userId}/attending/${eventId}`,
     {
@@ -193,21 +192,17 @@ export const deleteAttendingEvent = (userId, eventId) => async (dispatch) => {
     }
   );
   if (response.ok) {
-    const deletedRSVP = response.json();
-    dispatch(deleteRSVP(eventId));
+    dispatch(deleteRSVP(eventId, userId));
   }
 };
 
-export const getAllrsvps = () => async (dispatch) => {
- 
-  const response = await csrfFetch(`/api/rsvps`)
+export const getAllrsvps = (eventId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/rsvps/${eventId}`);
   if (response.ok) {
-    
     const allRSVPs = await response.json();
-    dispatch(getAllRSVPS(allRSVPs));
+    dispatch(getAllRSVPS(allRSVPs, eventId));
   }
 };
-
 
 const initialState = {
   list: [],
@@ -215,7 +210,7 @@ const initialState = {
   types: [],
   attending: [],
   hosting: [],
-  rvsps: []
+  rsvps: {},
 };
 // TODO: sort list by createdAt
 
@@ -268,24 +263,33 @@ export const eventReducer = (state = initialState, action) => {
       return newState;
     }
     case ADD_RSVP: {
-      const newState = { ...state };
-      newState.rsvps.push(action.event);
-      return newState;
+      return {
+        ...state,
+        rsvps: {
+          ...state.rsvps,
+          [action.event.eventId]: [
+            ...state.rsvps[action.event.eventId],
+            action.event,
+          ],
+        },
+      };
     }
     case DELETE_RSVP: {
-      const newState = { ...state };
-      const newArr = newState.rsvps.filter(
-        (rsvp) => rsvp.id !== action.eventId
+      const filterData = state.rsvps[action.eventId].filter(
+        (item) =>
+          !(item.id === action.userId && item.eventId === action.eventId)
       );
-      newState.attending = newArr;
-      return newState;
+      return {
+        ...state,
+        rsvps: { ...state.rsvps, [action.eventId]: filterData },
+      };
       // keeping in state the things the action doesn't happen to
     }
     case ALL_RSVPS: {
-     return {
-       ...state,
-       rsvps: action.rsvps,
-     };
+      return {
+        ...state,
+        rsvps: { ...state.rsvps, [action.id]: action.rsvps },
+      };
     }
     default:
       return state;

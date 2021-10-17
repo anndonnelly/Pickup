@@ -26,10 +26,10 @@ const validateEvent = [
     .exists({ checkFalsy: true })
     .isLength({ min: 4 })
     .withMessage("Please provide an event name with at least 4 characters."),
-  check("date")
-    .exists({ checkFalsy: true })
-    .isAfter(new Date().toString())
-    .withMessage("Please provide a date that is in the futute for your event"),
+  // check("date")
+  //   .exists({ checkFalsy: true })
+  //   .isAfter(new Date().toString())
+  //   .withMessage("Please provide a date that is in the futute for your event"),
   check("eventAttendees")
     .exists({ checkFalsy: true })
     .isInt()

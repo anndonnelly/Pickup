@@ -18,39 +18,42 @@ export const EventCard = ({
   image,
   date,
   eventAttendees,
+  Location,
+  ownerId,
   isEditEnabled,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const userId = useSelector((state) => state.session?.user?.id);
   const events = useSelector((state) => state.event);
   const dispatch = useDispatch();
   const history = useHistory();
   let rsvpArr = useSelector((state) => state?.event?.rsvps);
-  rsvpArr = rsvpArr?.filter((rsvp) => rsvp.eventId === id);
+  rsvpArr = rsvpArr?.[id];
 
   const attending = rsvpArr?.length;
-  // const attending = events.attending.filter(rsvp => )
 
+  // const attending = events.attending.filter(rsvp => )
+  console.log("ssssss", attending);
   const event = events.list[id];
   // const location = event?.Location
   const type = event?.Type;
   // const typeName = event?.Type.name
-  const {eventId} = useParams();
+  const { eventId } = useParams();
 
-  const locationName = event?.Location?.name;
-  const locationAddress = event?.Location?.address;
-  const locationCity = event?.Location?.city;
-  const locationZipCode = event?.Location?.zipCode;
+  const locationName = Location?.name;
+  const locationAddress = Location?.address;
+  const locationCity = Location?.city;
+  const locationZipCode = Location?.zipCode;
 
   useEffect(() => {
     dispatch(getTypes());
     dispatch(getAllrsvps(id));
-  }, [dispatch, id,]);
+  }, [dispatch, id]);
 
   useEffect(() => {
     if (isEditing) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "auto";
   }, [isEditing]);
-
 
   return (
     <div className="cardDiv">
@@ -76,7 +79,7 @@ export const EventCard = ({
           <span className="cardDescription">{description}</span>
           <div>
             <p>{`Event Attendees: ${attending} / ${eventAttendees}`}</p>
-            {isEditEnabled && (
+            {isEditEnabled && ownerId === userId && (
               <div className="myEventButtons">
                 <button value={isEditing} onClick={() => setIsEditing(true)}>
                   {/* href="#" */}
@@ -111,6 +114,3 @@ export const EventCard = ({
     </div>
   );
 };
-
-
-

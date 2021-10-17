@@ -1,16 +1,25 @@
 const { User } = require ("./models");
 const { Event } = require("./models");
 const { RSVP } = require("./models");
+const { Location } = require("./models");
 
 const listMyHostingEvents = async (id) => {
   return await User.findByPk(id, {
-    include: Event,
+    include: {
+      model: Event,
+      as: "reservations",
+      include: Location,
+    },
 });
 }
 
 const listMyAttendingEvents = async (id) => {
   return await User.findByPk(id, {
-    include: "reservations",
+    include: {
+      model: Event,
+      as: "reservations",
+      include: Location,
+    },
   });
 };
 

@@ -4,11 +4,11 @@ const rsvpRepository = require("../../db/rsvp-repository");
 const router = express.Router();
 
 router.get(
-  "/",
+  "/:eventId",
   asyncHandler(async (req, res) => {
-    
-     const rsvps = await rsvpRepository.listRSVPs();
-     return res.json(rsvps);
+    const { eventId } = req.params;
+    const rsvps = await rsvpRepository.listRSVPs(eventId);
+    return res.json(rsvps);
   })
 );
 
