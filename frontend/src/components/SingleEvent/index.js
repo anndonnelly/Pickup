@@ -6,6 +6,7 @@ import { getLocations } from "../../store/event";
 import { EventCard } from "../EventPage/EventCard";
 import { createAttendingEvent } from "../../store/event";
 import { useHistory } from "react-router-dom";
+
 // import "./SingeEvent.css";
 
 const OneEvent = () => {
@@ -17,7 +18,6 @@ const OneEvent = () => {
   });
 
   const userId = useSelector((state) => state.session?.user?.id);
-
   //  const location = useSelector((state) => {
   //    return state.event.list[locationId];
   //  });
@@ -34,6 +34,7 @@ const OneEvent = () => {
       eventId,
       userId,
     };
+ 
     let createdRSVP = await dispatch(createAttendingEvent(payload, eventId));
     if (createdRSVP) {
       history.push(`/users/${userId}/my-events`);

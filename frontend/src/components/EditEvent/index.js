@@ -56,6 +56,7 @@ const EditEventForm = ({ event, setIsEditing }) => {
      setValErrors(errors);
 
     const updatedEvent = await dispatch(updateEvent(payload));
+   
     if (updatedEvent) {
       setIsEditing(false);
     }

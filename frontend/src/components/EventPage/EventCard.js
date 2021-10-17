@@ -9,6 +9,7 @@ import { getTypes } from "../../store/event";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { getAllrsvps } from "../../store/event";
+import { useParams } from "react-router-dom";
 
 export const EventCard = ({
   id,
@@ -33,7 +34,7 @@ export const EventCard = ({
   // const location = event?.Location
   const type = event?.Type;
   // const typeName = event?.Type.name
-
+  const {eventId} = useParams();
 
   const locationName = event?.Location?.name;
   const locationAddress = event?.Location?.address;

@@ -204,7 +204,6 @@ export const getAllrsvps = () => async (dispatch) => {
   if (response.ok) {
     
     const allRSVPs = await response.json();
-
     dispatch(getAllRSVPS(allRSVPs));
   }
 };

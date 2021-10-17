@@ -36,10 +36,13 @@ async function updateEvent(details) {
   
   await Event.update(details, {
     where: { id },
+    
     returning: true,
     plain: true,
   });
-  return await Event.findByPk(id);
+  return await Event.findByPk(id, {
+    include: [Location],
+  });
 };
 
 async function deleteEvent(eventId) {
