@@ -65,10 +65,11 @@
   background-color: transparent;
   color: black;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .AlreadyAMemberContainer {
-  padding-left: 62px;
+  padding-left: 29px;
 }
 
 .Demo {

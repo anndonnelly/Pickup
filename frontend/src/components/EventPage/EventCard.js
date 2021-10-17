@@ -33,7 +33,6 @@ export const EventCard = ({
   const attending = rsvpArr?.length;
 
   // const attending = events.attending.filter(rsvp => )
-  console.log("ssssss", attending);
   const event = events.list[id];
   // const location = event?.Location
   const type = event?.Type;

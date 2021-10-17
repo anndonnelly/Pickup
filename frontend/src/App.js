@@ -8,8 +8,8 @@ import { Footer } from "./components/Navigation/Footer";
 import { SplashPage } from "./components/SplashPage/SplashPage";
 import EventPage from "./components/EventPage";
 import OneEvent from "./components/SingleEvent";
-import AttendingEvent from "./components/Attending";
-import HostingEvent from "./components/Hosting";
+// import AttendingEvent from "./components/Attending";
+// import HostingEvent from "./components/Hosting";
 // import HomePage from "./components/HomePage";
 import MyEvents from "./components/MyEvents";
 

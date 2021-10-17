@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getMyAttendingEvents, getMyHostedEvents } from "../../store/event";
 import { EventCard } from "../EventPage/EventCard";
 import "./MyEvents.css";
-import { getLocations } from "../../store/event";
+// import { getLocations } from "../../store/event";
 import { deleteAttendingEvent } from "../../store/event";
 // import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
