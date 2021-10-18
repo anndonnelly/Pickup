@@ -59,6 +59,7 @@ function CreateEventForm({ setShowEventModal }) {
     //     "'Please provide a date that is in the futute for your event'"
     //   );}
     if (!description) errors.push("Please provide a description of your event");
+    if (!eventAttendees) errors.push("Please state the max amount of attendees for your event");
     if (!address) errors.push("Please provide a valid address for your event");
     setValErrors(errors);
 
