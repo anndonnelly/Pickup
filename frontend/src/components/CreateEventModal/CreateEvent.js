@@ -81,9 +81,9 @@ function CreateEventForm({ setShowEventModal }) {
       <div>
         <form onSubmit={handleSubmit}>
           <ul className="errors">
-            {(valErrors.length > 0) ? valErrors.map((valError) => (
-              <li key={valError}>{valError}</li>
-            )) : null}
+            {valErrors.length > 0
+              ? valErrors.map((valError) => <li key={valError}>{valError}</li>)
+              : null}
           </ul>
           <div className="fieldDiv">
             <label>Event Name</label>
@@ -105,6 +105,7 @@ function CreateEventForm({ setShowEventModal }) {
             <label>Image</label>
             <input
               type="text"
+              required
               value={image}
               onChange={(e) => setImage(e.target.value)}
             />
@@ -114,7 +115,7 @@ function CreateEventForm({ setShowEventModal }) {
             <input
               type="datetime-local"
               value={date}
-              required 
+              required
               onChange={(e) => setDate(e.target.value)}
             />
           </div>
@@ -162,9 +163,7 @@ function CreateEventForm({ setShowEventModal }) {
             </select>
           </div>
           <div className="createEventButton">
-            <button type="submit">
-              Create Event
-            </button>
+            <button type="submit">Create Event</button>
           </div>
         </form>
       </div>
