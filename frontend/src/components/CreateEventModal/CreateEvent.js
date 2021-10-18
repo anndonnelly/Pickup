@@ -52,7 +52,7 @@ function CreateEventForm({ setShowEventModal }) {
 
     const errors = [];
     if (name.length < 4) errors.push("Please provide an event name with at least 4 characters.");
-    // if (name) errors.push("This username already exists")
+    if (name) errors.push("This event name already exists")
     //TODO
     // if (date1.getTime() > date2.getTime()) {
     //   errors.push(

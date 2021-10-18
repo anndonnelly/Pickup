@@ -165,7 +165,7 @@ export const getMyHostedEvents = (id) => async (dispatch) => {
   const res = await csrfFetch(`/api/users/${id}/hosting`);
   if (res.ok) {
     const events = await res.json();
-    dispatch(loadHosting(events.reservations));
+    dispatch(loadHosting(events.Events));
   }
 };
 
