@@ -7,7 +7,6 @@ const listMyHostingEvents = async (id) => {
   return await User.findByPk(id, {
     include: {
       model: Event,
-      // as: "reservations",
       include: Location,
     },
 });

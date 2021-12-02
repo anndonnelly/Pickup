@@ -29,9 +29,9 @@ function CreateEventForm({ setShowEventModal }) {
     dispatch(getTypes());
   }, [dispatch]);
 
-  useEffect(() => {
+//   useEffect(() => {
 
-  }, [])
+//   }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault();

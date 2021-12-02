@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/anndonnelly/Pickup/issues"
   },
-  "homepage": "https://github.com/anndonnelly/Pickup#readme"
+  "homepage": "https://github.com/anndonnelly/Pickup#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
 }
